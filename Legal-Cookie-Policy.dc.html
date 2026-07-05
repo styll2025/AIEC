@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<dc-import name="LegalPage" title="{{ data.title }}" effective-date="{{ data.effectiveDate }}" blocks="{{ data.blocks }}" hint-size="100%,100%"></dc-import>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      data: {
+        title: 'Cookie Policy',
+        effectiveDate: '14 December 2025',
+        blocks: [
+          { type: 'p', text: 'This Cookie Policy explains how AIEC ("we", "our", "us") uses cookies and similar technologies on our website. It should be read together with our Privacy Policy.' },
+          { type: 'p', text: 'By using our website, you consent to the use of cookies as described below.' },
+          { type: 'h2', text: '2. What Are Cookies?' },
+          { type: 'p', text: 'Cookies are small text files stored on your device when you browse a website. They help sites function, remember preferences, and understand how users interact with content.' },
+          { type: 'h2', text: '3. Types of Cookies We Use' },
+          { type: 'h3', text: '3.1 Essential Cookies' },
+          { type: 'p', text: 'Required for core website functionality:' },
+          { type: 'ul', items: ['Login and account management', 'Security and fraud prevention', 'Member dashboard access'] },
+          { type: 'p', text: 'Without these cookies, the site may not work properly.' },
+          { type: 'h3', text: '3.2 Analytics & Performance Cookies' },
+          { type: 'p', text: 'Used to understand site usage and improve the user experience. Examples: page views, user flows, traffic sources. We may use tools such as Google Analytics or privacy-preserving alternatives.' },
+          { type: 'h3', text: '3.3 Preference Cookies' },
+          { type: 'p', text: 'Used to remember language, cookie choices, and settings.' },
+          { type: 'h3', text: '3.4 Third-Party Cookies' },
+          { type: 'p', text: 'If enabled, third parties may place cookies for analytics or embedded content (e.g., YouTube, Stripe, embedded calendars). AIEC does not control these cookies.' },
+          { type: 'h2', text: '4. Managing Cookies' },
+          { type: 'p', text: 'You may control or disable cookies in your browser settings. Where required by law, we display a cookie banner allowing users to accept or reject non-essential cookies.' },
+          { type: 'h2', text: '5. Updates' },
+          { type: 'p', text: 'We may update this Cookie Policy periodically. Updates will be posted on this page.' },
+          { type: 'h2', text: '6. Contact' },
+          { type: 'p', text: 'For questions about this policy, contact AIEC – AI Ethics Consortium.' },
+        ],
+      },
+    };
+  }
+}
+
+</script>
+</body>
+</html>

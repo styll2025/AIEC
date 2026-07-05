@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<dc-import name="LegalPage" title="{{ data.title }}" effective-date="{{ data.effectiveDate }}" blocks="{{ data.blocks }}" hint-size="100%,100%"></dc-import>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      data: {
+        title: 'Terms of Service',
+        effectiveDate: '14 December 2025',
+        blocks: [
+          { type: 'p', text: 'By accessing the AIEC website, applying for membership, or creating a public profile, you agree to these Terms of Service ("Terms").' },
+          { type: 'h2', text: '2. About AIEC' },
+          { type: 'p', text: 'AIEC is a Washington-based nonprofit organization offering:' },
+          { type: 'ul', items: ['A public directory of AI ethics experts', 'Professional membership', 'AI ethics educational and governance resources'] },
+          { type: 'h2', text: '3. Eligibility' },
+          { type: 'p', text: 'You must:' },
+          { type: 'ul', items: ['Be at least 18 years old', 'Provide accurate and truthful information', "Comply with AIEC's Code of Ethics & Professional Standards", 'Hold a CAIE certification issued by OxEthica and mapped to the Oxford AI Ethics, Regulation & Compliance Programme', 'Use the site in compliance with all applicable laws'] },
+          { type: 'h2', text: '4. Membership' },
+          { type: 'p', text: 'Membership may include:' },
+          { type: 'ul', items: ['Listing in the expert directory', 'Access to community resources', 'Use of AIEC badges/certifications (subject to rules)', 'Participation in events or governance activities'] },
+          { type: 'p', text: 'AIEC reserves the right to approve, deny, or revoke membership.' },
+          { type: 'h2', text: '5. Public Expert Directory' },
+          { type: 'p', text: 'Members may create a public profile. By doing so, you agree:' },
+          { type: 'ul', items: ['Your name, email, photo, and profile details will be visible publicly', 'Your email may be used by external parties to contact you', 'AIEC does not mediate communication between you and third parties', 'AIEC is not liable for any outcomes of external engagements (e.g., consultations)'] },
+          { type: 'p', text: 'You may request changes or removal at any time.' },
+          { type: 'h2', text: '6. User Responsibilities' },
+          { type: 'p', text: 'You agree not to:' },
+          { type: 'ul', items: ['Provide misleading or false information', 'Upload unlawful, discriminatory, or inappropriate content', 'Misrepresent professional qualifications', 'Use the platform to spam or harass others', 'Copy, scrape, or misuse the directory data', 'Interfere with website functionality or security'] },
+          { type: 'p', text: 'Violation may result in account suspension or removal.' },
+          { type: 'h2', text: '7. Intellectual Property' },
+          { type: 'p', text: 'All AIEC content (logos, materials, certifications) is protected. Members may only use AIEC badges or certification marks according to AIEC\u2019s brand and ethics guidelines. Members retain ownership of their profile content and grant AIEC a licence to display it.' },
+          { type: 'h2', text: '8. Payments (if activated)' },
+          { type: 'p', text: 'If AIEC enables online payment for membership:' },
+          { type: 'ul', items: ['Payments may be handled by third-party processors', 'Fees are non-refundable unless otherwise stated', 'Membership is active only after payment confirmation'] },
+          { type: 'p', text: 'If payments are offline, invoices may be issued by email.' },
+          { type: 'h2', text: '9. Disclaimer' },
+          { type: 'p', text: 'AIEC:' },
+          { type: 'ul', items: ['Does not guarantee job outcomes or contracts for members', 'Does not endorse or verify all information provided by Members', 'Does not guarantee accuracy of directory listings', 'Is not responsible for any interaction between Members and third parties', 'Provides services "as is" without warranties'] },
+          { type: 'h2', text: '10. Limitation of Liability' },
+          { type: 'p', text: 'To the fullest extent permitted by law, AIEC is not liable for:' },
+          { type: 'ul', items: ['Indirect, incidental, or consequential damages', 'Losses arising from use of directory profiles', 'Third-party actions, misconduct, or disputes', 'Service interruptions, errors, or data loss'] },
+          { type: 'h2', text: '11. Indemnification' },
+          { type: 'p', text: 'You agree to indemnify and hold AIEC harmless from claims arising from your content, your interactions with third parties, and your breach of these Terms.' },
+          { type: 'h2', text: '12. Termination' },
+          { type: 'p', text: 'AIEC may suspend or terminate membership or website access for violations of these Terms or the Code of Ethics, non-payment, or fraud or misrepresentation. Members may cancel their membership at any time.' },
+          { type: 'h2', text: '13. Governing Law' },
+          { type: 'p', text: 'These Terms are governed by the laws of the State of Washington, USA, without regard to conflict of law rules. Any disputes will be resolved in Washington State courts.' },
+          { type: 'h2', text: '14. Modifications' },
+          { type: 'p', text: 'AIEC may update these Terms at any time. Changes become effective when posted on the website.' },
+          { type: 'h2', text: '15. Contact' },
+          { type: 'p', text: 'For questions about these Terms, contact AIEC – AI Ethics Consortium, Washington, US.' },
+        ],
+      },
+    };
+  }
+}
+
+</script>
+</body>
+</html>

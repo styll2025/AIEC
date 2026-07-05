@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style> body { margin: 0; } a { text-decoration: none; } </style>
+</helmet>
+
+<div style="font-family: 'Work Sans', sans-serif; background: #ffffff; color: #14182c; width: 100%; overflow-x: hidden;" data-screen-label="Contact">
+
+  <div style="position: relative; background: linear-gradient(135deg, #0d1b26 0%, #14182c 55%, #0f2b28 100%);">
+    <dc-import name="SiteNav" active="contact" dark="{{ true }}" hint-size="100%,90px"></dc-import>
+    <div style="max-width: 1180px; margin: 0 auto; padding: 64px 56px 80px;">
+      <p style="color: #a99bf5; font-size: 12.5px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin: 0 0 18px;">Get in Touch</p>
+      <h1 style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 38px; color: #f6f4ee; margin: 0 0 14px;">Contact Us</h1>
+      <p style="color: #cdd0e0; font-size: 16px; margin: 0; max-width: 620px;">Get in touch to explore questions, ideas, collaborations, or projects.</p>
+    </div>
+  </div>
+
+  <div style="background: #ffffff; padding: 96px 56px; min-height: 420px;">
+    <div style="max-width: 1180px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 56px;">
+      <div style="flex: 1 1 360px;">
+        <p style="font-size: 16px; color: #43465a; line-height: 1.75; margin: 0 0 22px;">If you have an enquiry, would like to initiate a project, or explore a collaboration or partnership, please complete the contact form provided.</p>
+        <p style="font-size: 16px; color: #43465a; line-height: 1.75; margin: 0 0 22px;">You may choose to reach out directly to professionals within our network for specific project needs.</p>
+        <p style="font-size: 16px; color: #43465a; line-height: 1.75; margin: 0;">Alternatively, you can share details about your organisation, use case, or challenge through the form, and the Consortium team will review your request and follow up with a tailored proposal or recommended next steps.</p>
+      </div>
+      <div style="flex: 1 1 400px;">
+
+        <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
+          <div style="border: 1px solid rgba(20,24,44,0.12); border-radius: 4px; padding: 40px 34px; text-align: center; border-top: 3px solid #6d5ce8;">
+            <h3 style="font-family: 'Source Serif 4', serif; font-size: 19px; color: #14182c; margin: 0 0 14px;">Thank you</h3>
+            <p style="font-size: 14.5px; color: #43465a; line-height: 1.7; margin: 0;">Your message has been received. The Consortium team will follow up shortly.</p>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ notSubmitted }}" hint-placeholder-val="{{ true }}">
+          <div style="border: 1px solid rgba(20,24,44,0.12); border-radius: 4px; padding: 34px 30px; border-top: 3px solid #6d5ce8;">
+
+            <div style="display: flex; gap: 8px; margin-bottom: 10px;">
+              <div style="flex: 1; height: 4px; border-radius: 2px; background: {{ dot1Color }};"></div>
+              <div style="flex: 1; height: 4px; border-radius: 2px; background: {{ dot2Color }};"></div>
+            </div>
+            <p style="font-size: 12px; color: #7b7e91; margin: 0 0 24px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase;">{{ stepLabel }}</p>
+
+            <!-- STEP 1: Reach Out -->
+            <sc-if value="{{ isStep1 }}" hint-placeholder-val="{{ true }}">
+              <h2 style="font-family: 'Source Serif 4', serif; font-size: 19px; margin: 0 0 20px;">Reach Out</h2>
+              <div style="display: flex; flex-direction: column; gap: 16px;">
+                <div>
+                  <label style="font-size: 13px; font-weight: 600; color: #43465a; display: block; margin: 0 0 6px;">Full Name *</label>
+                  <input type="text" placeholder="Full name" value="{{ fullName }}" oninput="{{ onFullNameChange }}"
+                    style="width: 100%; box-sizing: border-box; padding: 12px 14px; border-radius: 3px; border: 1.5px solid {{ fullNameBorder }}; font-size: 14.5px; font-family: 'Work Sans', sans-serif;" />
+                </div>
+                <div>
+                  <label style="font-size: 13px; font-weight: 600; color: #43465a; display: block; margin: 0 0 6px;">Work Email *</label>
+                  <input type="email" placeholder="Work email" value="{{ email }}" oninput="{{ onEmailChange }}"
+                    style="width: 100%; box-sizing: border-box; padding: 12px 14px; border-radius: 3px; border: 1.5px solid {{ emailBorder }}; font-size: 14.5px; font-family: 'Work Sans', sans-serif;" />
+                </div>
+                <div>
+                  <label style="font-size: 13px; font-weight: 600; color: #43465a; display: block; margin: 0 0 6px;">Organization / Company *</label>
+                  <input type="text" placeholder="Organization / company" value="{{ org }}" oninput="{{ onOrgChange }}"
+                    style="width: 100%; box-sizing: border-box; padding: 12px 14px; border-radius: 3px; border: 1.5px solid {{ orgBorder }}; font-size: 14.5px; font-family: 'Work Sans', sans-serif;" />
+                </div>
+              </div>
+              <div style="text-align: right; margin-top: 28px;">
+                <button type="button" onclick="{{ onNext }}" style="background: #6d5ce8; color: #fff; font-weight: 600; font-size: 14.5px; padding: 13px 30px; border-radius: 3px; border: none; cursor: pointer; font-family: 'Work Sans', sans-serif;">Next</button>
+              </div>
+            </sc-if>
+
+            <!-- STEP 2: Enquiry details -->
+            <sc-if value="{{ isStep2 }}" hint-placeholder-val="{{ false }}">
+              <div style="display: flex; flex-direction: column; gap: 20px;">
+                <div>
+                  <label style="font-size: 13px; font-weight: 600; color: #43465a; display: block; margin: 0 0 12px;">Type of Engagement *</label>
+                  <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <sc-for list="{{ engagementOptions }}" as="opt" hint-placeholder-count="4">
+                      <label style="display: flex; align-items: center; gap: 12px; border: 1.5px solid {{ opt.borderColor }}; border-radius: 3px; padding: 12px 14px; cursor: pointer; font-size: 14px; color: #14182c;">
+                        <span style="width: 22px; height: 22px; border-radius: 3px; background: {{ opt.badgeBg }}; color: {{ opt.badgeColor }}; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex: none;">{{ opt.letter }}</span>
+                        <input type="radio" name="engagement" checked="{{ opt.checked }}" onchange="{{ opt.onSelect }}" style="display: none;" />
+                        {{ opt.label }}
+                      </label>
+                    </sc-for>
+                  </div>
+                </div>
+                <div>
+                  <label style="font-size: 13px; font-weight: 600; color: #43465a; display: block; margin: 0 0 6px;">Summary of Enquiry or Project *</label>
+                  <textarea placeholder="Summary of enquiry or project" value="{{ summary }}" oninput="{{ onSummaryChange }}" rows="5"
+                    style="width: 100%; box-sizing: border-box; padding: 12px 14px; border-radius: 3px; border: 1.5px solid {{ summaryBorder }}; font-size: 14.5px; font-family: 'Work Sans', sans-serif; resize: vertical;"></textarea>
+                </div>
+              </div>
+              <div style="display: flex; justify-content: space-between; margin-top: 28px;">
+                <button type="button" onclick="{{ onBack }}" style="background: none; border: 1.5px solid #d4d6de; color: #43465a; font-weight: 600; font-size: 14px; padding: 12px 26px; border-radius: 3px; cursor: pointer; font-family: 'Work Sans', sans-serif;">Back</button>
+                <button type="button" onclick="{{ onSubmit }}" style="background: #6d5ce8; color: #fff; font-weight: 600; font-size: 14.5px; padding: 13px 30px; border-radius: 3px; border: none; cursor: pointer; font-family: 'Work Sans', sans-serif;">Submit</button>
+              </div>
+            </sc-if>
+
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </div>
+
+  <dc-import name="SiteFooter" hint-size="100%,340px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const ENGAGEMENT_TYPES = [
+  { letter: 'A', label: 'Project Collaboration' },
+  { letter: 'B', label: 'Hire an Expert/Team' },
+  { letter: 'C', label: 'General Enquiry' },
+  { letter: 'D', label: 'Partnership Opportunity' },
+];
+
+class Component extends DCLogic {
+  state = {
+    step: 1, submitted: false, touched: {},
+    fullName: '', email: '', org: '',
+    engagement: '', summary: '',
+  };
+
+  isValidEmail(e) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
+  }
+
+  validateStep1() {
+    const s = this.state;
+    return s.fullName.trim() && this.isValidEmail(s.email.trim()) && s.org.trim();
+  }
+
+  validateStep2() {
+    const s = this.state;
+    return s.engagement && s.summary.trim();
+  }
+
+  renderVals() {
+    const s = this.state;
+    const okColor = '#d4d6de';
+    const errColor = '#c0392b';
+    const t = s.touched;
+
+    const engagementOptions = ENGAGEMENT_TYPES.map(opt => {
+      const checked = s.engagement === opt.label;
+      return {
+        letter: opt.letter,
+        label: opt.label,
+        checked,
+        borderColor: checked ? '#6d5ce8' : '#d4d6de',
+        badgeBg: checked ? '#6d5ce8' : '#f0f0f3',
+        badgeColor: checked ? '#fff' : '#7b7e91',
+        onSelect: () => this.setState({ engagement: opt.label }),
+      };
+    });
+
+    return {
+      submitted: s.submitted,
+      notSubmitted: !s.submitted,
+      isStep1: s.step === 1,
+      isStep2: s.step === 2,
+      stepLabel: s.step === 1 ? 'Step 1 · Reach Out' : 'Step 2 · Your Enquiry',
+      dot1Color: '#6d5ce8',
+      dot2Color: s.step === 2 ? '#6d5ce8' : '#e4e5ec',
+
+      fullName: s.fullName, email: s.email, org: s.org,
+      fullNameBorder: t.step1 && !s.fullName.trim() ? errColor : okColor,
+      emailBorder: t.step1 && !this.isValidEmail(s.email.trim()) ? errColor : okColor,
+      orgBorder: t.step1 && !s.org.trim() ? errColor : okColor,
+      onFullNameChange: (e) => this.setState({ fullName: e.target.value }),
+      onEmailChange: (e) => this.setState({ email: e.target.value }),
+      onOrgChange: (e) => this.setState({ org: e.target.value }),
+
+      engagementOptions,
+      summary: s.summary,
+      summaryBorder: t.step2 && !s.summary.trim() ? errColor : okColor,
+      onSummaryChange: (e) => this.setState({ summary: e.target.value }),
+
+      onNext: () => {
+        if (this.validateStep1()) {
+          this.setState({ step: 2 });
+        } else {
+          this.setState({ touched: { ...s.touched, step1: true } });
+        }
+      },
+      onBack: () => this.setState({ step: 1 }),
+      onSubmit: () => {
+        if (this.validateStep2()) {
+          this.setState({ submitted: true });
+        } else {
+          this.setState({ touched: { ...s.touched, step2: true } });
+        }
+      },
+    };
+  }
+}
+
+</script>
+</body>
+</html>

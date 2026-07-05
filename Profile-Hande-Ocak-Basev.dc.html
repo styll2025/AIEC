@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<dc-import name="ProfilePage"
+  person-name="{{ data.name }}"
+  title="{{ data.title }}"
+  credentials="{{ data.credentials }}"
+  based="{{ data.based }}"
+  company="{{ data.company }}"
+  geo-coverage="{{ data.geoCoverage }}"
+  extra-label="{{ data.extraLabel }}"
+  extra-value="{{ data.extraValue }}"
+  photo="{{ data.photo }}"
+  bg-paragraphs="{{ data.bgParagraphs }}"
+  support-heading="{{ data.supportHeading }}"
+  support-blocks="{{ data.supportBlocks }}"
+  industries-label="{{ data.industriesLabel }}"
+  industries="{{ data.industries }}"
+  consultation="{{ data.consultation }}"
+  hint-size="100%,100%">
+</dc-import>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      data: {
+        name: 'Hande Ocak Basev',
+        title: 'Managing Partner, WSI',
+        credentials: 'Certified AI Ethicist (CAIE); Certified AI Professional (CAIP); Certified AI Auditor (CAIA)',
+        based: 'Turkey',
+        company: 'WSI',
+        geoCoverage: 'Global – Europe, United Kingdom, North America and Türkiye',
+        extraLabel: 'Website',
+        extraValue: 'wsi-dms-ai.com',
+        photo: 'assets/head_hande.png',
+        consultation: false,
+        bgParagraphs: [
+          'I am an AI Strategist, entrepreneur, and Principal of WSI Digital Marketing Services, with over 20 years of experience in business transformation, leadership development, and digital innovation. I help organisations adopt AI responsibly by aligning strategy, governance, workforce readiness, and business objectives.',
+          'As a member of the WSI Global AI Leadership Board, a Forbes Türkiye AI columnist, and a board-level advisor, I am passionate about advancing ethical, human-centred, and practical AI adoption across industries.',
+        ],
+        supportHeading: "How Hande's Work Supports Organisations",
+        supportBlocks: [
+          { body: 'I support organisations in developing and implementing responsible AI strategies that drive business value while addressing governance, risk, workforce readiness, and leadership challenges. Through consulting, executive education, and transformation programmes, I help leaders build AI capability, strengthen decision-making, foster ethical AI adoption, and create sustainable frameworks for long-term organisational success.' },
+        ],
+        industriesLabel: 'Industries She Focuses On',
+        industries: 'Technology, Healthcare, Education, Financial Services, Banking, Insurance, Consulting / Professional Services, Government / Public Sector, Non-profits / NGOs, Retail, E-commerce, Manufacturing, Transportation, Logistics / Supply Chain, Energy, Telecommunications, Media & Entertainment, Construction, Automotive, Legal, Human Resources / Talent & Recruitment, Research & Academia, Sports, Consumer Goods / FMCG.',
+      },
+    };
+  }
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style> body { margin: 0; } a { text-decoration: none; } </style>
+</helmet>
+
+<div style="font-family: 'Work Sans', sans-serif; background: #ffffff; color: #14182c; width: 100%; overflow-x: hidden;" data-screen-label="Find Experts">
+
+  <div style="position: relative; background-image: linear-gradient(180deg, rgba(10,13,26,0.55), rgba(10,13,26,0.85)), url('assets/img_office_meeting.png'); background-size: cover; background-position: center;">
+    <dc-import name="SiteNav" active="find" dark="{{ true }}" hint-size="100%,90px"></dc-import>
+    <div style="max-width: 1180px; margin: 0 auto; padding: 64px 56px 80px;">
+      <p style="color: #a99bf5; font-size: 12.5px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin: 0 0 18px;">The Directory</p>
+      <h1 style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 38px; color: #f6f4ee; margin: 0 0 14px;">AIEC Network of Certified Professionals</h1>
+      <p style="color: #cdd0e0; font-size: 16px; margin: 0; max-width: 620px;">Browse the verified profiles of certified AI professionals, ethicists and auditors from the global AIEC network.</p>
+    </div>
+  </div>
+
+  <div style="background: #14182c; padding: 28px 56px;">
+    <div style="max-width: 1180px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 16px; align-items: center;">
+      <input type="text" placeholder="Search by name, sector or focus..." value="{{ query }}" oninput="{{ onQueryChange }}"
+        style="flex: 1 1 320px; padding: 13px 18px; border-radius: 3px; border: 1px solid rgba(246,244,238,0.2); background: #1c2140; color: #f6f4ee; font-size: 14.5px; font-family: 'Work Sans', sans-serif; outline: none;" />
+      <select value="{{ region }}" onchange="{{ onRegionChange }}"
+        style="padding: 13px 18px; border-radius: 3px; border: 1px solid rgba(246,244,238,0.2); background: #1c2140; font-size: 14.5px; font-family: 'Work Sans', sans-serif; color: #f6f4ee; min-width: 200px;">
+        <sc-for list="{{ regions }}" as="r" hint-placeholder-count="7">
+          <option value="{{ r }}">{{ r }}</option>
+        </sc-for>
+      </select>
+    </div>
+  </div>
+
+  <div style="background: #ffffff; padding: 40px 56px 96px;">
+    <div style="max-width: 1180px; margin: 0 auto;">
+      <p style="color: #7b7e91; font-size: 13.5px; margin: 0 0 28px;">{{ resultsLabel }}</p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px;">
+        <sc-for list="{{ filtered }}" as="p" hint-placeholder-count="8">
+          <div style="border: 1px solid rgba(20,24,44,0.12); border-radius: 4px; padding: 32px 28px; text-align: center; border-top: 3px solid #6d5ce8;">
+            <img src="{{ p.photo }}" alt="{{ p.name }}" style="width: 96px; height: 96px; border-radius: 50%; object-fit: cover; margin: 0 auto 18px; display: block;" />
+            <h3 style="font-family: 'Source Serif 4', serif; font-size: 18px; color: #14182c; margin: 0 0 6px;">{{ p.name }}</h3>
+            <p style="font-size: 13px; color: #6d5ce8; margin: 0 0 4px; font-weight: 600;">{{ p.title }}</p>
+            <p style="font-size: 12.5px; color: #7b7e91; margin: 0 0 16px;">{{ p.credentials }}</p>
+            <p style="font-size: 12.5px; color: #43465a; text-align: left; margin: 0 0 8px;"><b>Sectors:</b> {{ p.sectors }}</p>
+            <p style="font-size: 12.5px; color: #43465a; text-align: left; margin: 0 0 18px;"><b>Focus:</b> {{ p.focus }}</p>
+            <a href="{{ p.slug }}" style="color: #14182c; font-weight: 600; font-size: 13.5px; border-bottom: 1.5px solid #6d5ce8;">See Profile</a>
+          </div>
+        </sc-for>
+        <div style="background: #14182c; border-radius: 4px; padding: 32px 28px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+          <h3 style="font-family: 'Source Serif 4', serif; font-size: 19px; color: #f6f4ee; margin: 0 0 14px;">Join the AIEC Membership</h3>
+          <p style="font-size: 13.5px; color: #cdd0e0; line-height: 1.7; margin: 0 0 24px;">Join a global network of certified AI experts. Expand your practice, collaborate on meaningful projects, and contribute to shaping the ethical future of artificial intelligence.</p>
+          <a href="JoinAIEC.dc.html" style="background: #6d5ce8; color: #fff; font-weight: 600; font-size: 14px; padding: 12px 26px; border-radius: 3px;">Join the Consortium</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <dc-import name="SiteFooter" hint-size="100%,340px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const PEOPLE = [
+  { name: 'Jess Sharkie', title: 'AIEC Co-founder | Community Development', credentials: 'CAIA, CAIE, CAIP', sectors: 'Public sector, Non-for-profit, Healthcare, Consulting', focus: 'Human Rights & AI, Governance, Ethics', region: 'Australia', photo: 'assets/head_jess.png', slug: 'Profile-Jess-Sharkie.dc.html' },
+  { name: 'Katharine Nohr', title: 'AIEC Co-founder | AI Ethics Consultant', credentials: 'CAIA, CAIE, CAIP', sectors: 'Healthcare, Insurance, Consulting / Professional Services', focus: 'AI Ethics', region: 'USA', photo: 'assets/head_katharine.png', slug: 'Profile-Katharine-Nohr.dc.html' },
+  { name: 'Sara Portell', title: 'AIEC Co-founder | Behavioural Scientist | Responsible AI and Governance Consultant', credentials: 'CAIE, ISO/IEC 42001 Auditor', sectors: 'Education, Mental Health/Wellbeing, SaaS B2B, eCommerce, Travel', focus: 'Human–AI interaction, Ethics & Governance', region: 'EU', photo: 'assets/head_sara.png', slug: 'Profile-Sara-Portell.dc.html' },
+  { name: 'Jennifer McKinney', title: 'AIEC Co-founder | AI Governance & Regulatory Intelligence Architect', credentials: 'CAIA, CAIE, CAIP', sectors: 'Non Profit, Retail, Supply Chains, Medical Devices', focus: 'AI Product Strategy & Governance', region: 'USA', photo: 'assets/head_jennifer.png', slug: 'Profile-Jennifer-McKinney.dc.html' },
+  { name: 'Arif Rahman', title: 'Head of Data & AI', credentials: 'CAIA, CAIP, CAIE, APM', sectors: 'Technology, Education, Consulting / Professional Services, Government', focus: 'Strategy, governance, and real-world implementation', region: 'UAE', photo: 'assets/head_arif.png', slug: 'Profile-Arif-Rahman.dc.html' },
+  { name: 'Rhonda Sharif', title: 'AI Governance Specialist & Solutions Architect', credentials: 'CAIA, CAIE, CAIP', sectors: 'Technology, Healthcare, Insurance, Consulting / Professional Services', focus: 'AI Governance', region: 'USA', photo: 'assets/head_rhonda.png', slug: 'Profile-Rhonda-Sharif.dc.html' },
+  { name: 'Prashant Vora', title: 'Vice President, Tata Consultancy Services Ltd', credentials: 'CAIA, CAIP, CAIE', sectors: 'Consulting / Professional Services, Technology, Financial Services, Communication, Media & Information Services', focus: 'AI Ethics', region: 'UK', photo: 'assets/head_prashant.png', slug: 'Profile-Prashant-Vora.dc.html' },
+  { name: 'Angelo Manassero', title: 'Corporate Philosopher | AI Ethics & Governance Advisor', credentials: 'CAIA, CAIE, CAIP', sectors: 'Consulting / Professional Services, Non-profits / NGOs, Education, Public Sector, Human Resources / Talent & Recruitment', focus: 'AI Ethics & Governance', region: 'Italy', photo: 'assets/head_angelo.png', slug: 'Profile-Angelo-Manassero.dc.html' },
+  { name: 'Hande Ocak Basev', title: 'Managing Partner, WSI', credentials: 'CAIE, CAIP, CAIA', sectors: 'Technology, Financial Services, Consulting / Professional Services, Government / Public Sector, Retail, Manufacturing', focus: 'AI Strategy, Governance & Workforce Readiness', region: 'Turkey', photo: 'assets/head_hande.png', slug: 'Profile-Hande-Ocak-Basev.dc.html' },
+  { name: 'John McGann', title: 'Global Programme Director, Albany Ltd', credentials: 'CAIP, CAIE, CAIA', sectors: 'Technology, Financial Services, Healthcare, Government / Public Sector, Manufacturing, Retail', focus: 'AI Governance, Risk Assessment & Regulatory Conformity', region: 'UK', photo: 'assets/head_john.png', slug: 'Profile-John-McGann.dc.html' },
+];
+
+class Component extends DCLogic {
+  state = { query: '', region: 'All Regions' };
+
+  renderVals() {
+    const q = this.state.query.trim().toLowerCase();
+    const region = this.state.region;
+    const filtered = PEOPLE.filter(p => {
+      const matchesRegion = region === 'All Regions' || p.region === region;
+      const haystack = (p.name + ' ' + p.sectors + ' ' + p.focus + ' ' + p.title).toLowerCase();
+      const matchesQuery = q === '' || haystack.includes(q);
+      return matchesRegion && matchesQuery;
+    });
+    const regions = ['All Regions', ...Array.from(new Set(PEOPLE.map(p => p.region))).sort()];
+    return {
+      query: this.state.query,
+      region: this.state.region,
+      regions,
+      filtered,
+      resultsLabel: filtered.length + ' of ' + PEOPLE.length + ' professionals shown',
+      onQueryChange: (e) => this.setState({ query: e.target.value }),
+      onRegionChange: (e) => this.setState({ region: e.target.value }),
+    };
+  }
+}
+
+</script>
+</body>
+</html>

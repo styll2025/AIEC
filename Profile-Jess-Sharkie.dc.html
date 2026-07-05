@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<dc-import name="ProfilePage"
+  person-name="{{ data.name }}"
+  title="{{ data.title }}"
+  credentials="{{ data.credentials }}"
+  based="{{ data.based }}"
+  company="{{ data.company }}"
+  geo-coverage="{{ data.geoCoverage }}"
+  photo="{{ data.photo }}"
+  bg-paragraphs="{{ data.bgParagraphs }}"
+  support-heading="{{ data.supportHeading }}"
+  support-blocks="{{ data.supportBlocks }}"
+  industries-label="{{ data.industriesLabel }}"
+  industries="{{ data.industries }}"
+  consultation="{{ data.consultation }}"
+  hint-size="100%,100%">
+</dc-import>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      data: {
+        name: 'Jess Sharkie',
+        title: 'AIEC Co-Founder',
+        credentials: 'Certified AI Professional (CAIP); Certified AI Ethicist (CAIE); Certified AI Auditor (CAIA)',
+        based: 'Australia',
+        company: 'Local Government | BrightLine AI',
+        geoCoverage: 'AUS, UK, US, EU',
+        photo: 'assets/head_jess.png',
+        consultation: false,
+        bgParagraphs: [
+          'Jess is a public sector leader and AI governance practitioner with Oxford Saïd certifications and oxethica professional designations spanning AI, AI Ethics, AI Auditing and digital transformation in government. She is currently completing a Graduate Diploma in AI at La Trobe University.',
+          "She works at the intersection of program delivery and responsible technology adoption, with over 15 years of experience in local government and a track record of shaping AI governance at sector level. She chairs the LGITSA (Local Government IT South Australia) AI Sub Committee, serves on the LGITSA Board and contributed to the AI Adoption Toolkit which is used across South Australian local government.",
+          'Through her consultancy BrightLine AI, she works with organisations across Australia, the UK, the US and the EU to build governance frameworks that are practical, auditable and centred on community outcomes. Her focus is on making sure that when AI enters high-stakes environments, it works for the people inside them, not just the systems around them.',
+        ],
+        supportHeading: "How Jess's Work Supports Organisations",
+        supportBlocks: [
+          { body: 'I bring a "human-in-the-loop" perspective that offers a distinct alternative to traditional technical consulting. Because I do not come from a pure engineering background, I approach AI with a wide angle lens, ensuring systems are not just code compliant, but truly fit for human interaction.' },
+          {
+            body: 'My value lies in the intersection of creative pattern recognition and pragmatic strategy:',
+            bullets: [
+              { lead: 'The Creative Strategist', rest: 'As a musician and songwriter, I am a natural storyteller. I see non-obvious links between complex problems, much like I see patterns in music, people, or data.' },
+              { lead: 'Systems Thinking', rest: 'From reading neuroscience to managing my farm, I am fascinated by how things work biologically, technically and practically. I love the numbers and the strategy, but I never lose sight of the human element.' },
+            ],
+          },
+          { body: "Let's work together to ensure your innovation is as robust as it is revolutionary." },
+        ],
+        industriesLabel: 'Industries She Focuses On',
+        industries: 'Government and public sector, non-profits and NGOs, healthcare, pharmaceuticals and life sciences, consulting and professional services, technology, agriculture and agritech.',
+      },
+    };
+  }
+}
+
+</script>
+</body>
+</html>

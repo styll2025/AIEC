@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<dc-import name="ProfilePage"
+  person-name="{{ data.name }}"
+  title="{{ data.title }}"
+  credentials="{{ data.credentials }}"
+  based="{{ data.based }}"
+  company="{{ data.company }}"
+  geo-coverage="{{ data.geoCoverage }}"
+  extra-label="{{ data.extraLabel }}"
+  extra-value="{{ data.extraValue }}"
+  photo="{{ data.photo }}"
+  bg-paragraphs="{{ data.bgParagraphs }}"
+  support-heading="{{ data.supportHeading }}"
+  support-blocks="{{ data.supportBlocks }}"
+  industries-label="{{ data.industriesLabel }}"
+  industries="{{ data.industries }}"
+  consultation="{{ data.consultation }}"
+  hint-size="100%,100%">
+</dc-import>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      data: {
+        name: 'Sara Portell',
+        title: 'AIEC Co-Founder; Behavioural Science, AI Product Strategy | Responsible AI and Governance Consultant',
+        credentials: 'CAIE, ISO/IEC 42001 AIMS Certified Auditor',
+        based: 'EU',
+        company: 'HCRAI',
+        geoCoverage: 'UK/ EU, International',
+        extraLabel: 'Website',
+        extraValue: 'hcrai.com',
+        photo: 'assets/head_sara.png',
+        consultation: true,
+        bgParagraphs: [
+          "Sara Portell is a Behavioural Scientist and AI product strategist, specialised in human-AI interaction, behavioural risk and responsible AI. She has over 17 years' experience leading product, UX and research in global tech firms and start ups. Her work combines industry practice with academic rigour, drawing on an MSc in Behavioural Science (LSE), MBA in Strategy & Management of International Business (ESSEC) and PhD research in Psychology and AI at Universidade Católica Portuguesa. An Oxford-certified AI Ethicist and ISO/IEC 42001-certified in AI Management Systems auditor, she helps organisations design AI systems that are trustworthy, safe and compliant.",
+        ],
+        supportHeading: "How Sara's Work Supports Organisations",
+        supportBlocks: [
+          { body: 'Sara helps organisations identify and mitigate the behavioural risks that emerge when AI systems meet real users. Drawing on behavioural science, AI ethics and regulation, she uncovers where and why things go wrong in practice, and translates those findings into design and governance strategies that address them.' },
+          { body: 'She works with organisation leaders and product teams to develop responsible practices, and define interaction patterns, safeguards and governance mechanisms that prevent harmful or unintended use, and build trust at the right level.' },
+        ],
+        industriesLabel: 'Industries She Focuses On',
+        industries: 'EdTech | Enterprise SaaS (HR, Talent Management, Financial Management) | eCommerce/ Marketplaces | HealthTech/ Mental Health | FemTech | Travel & Tourism | Technology | Media & Entertainment | Consulting/ Professional Services | Research',
+      },
+    };
+  }
+}
+
+</script>
+</body>
+</html>

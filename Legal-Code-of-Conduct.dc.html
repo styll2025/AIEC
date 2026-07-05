@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<template id="__bundler_thumbnail" data-bg-color="#14182c">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#14182c"/>
+    <g fill="none" stroke="#a99bf5" stroke-width="10">
+      <rect x="380" y="220" width="440" height="360" rx="12"/>
+      <line x1="440" y1="300" x2="760" y2="300"/>
+      <line x1="440" y1="360" x2="760" y2="360"/>
+      <line x1="440" y1="420" x2="680" y2="420"/>
+      <line x1="440" y1="480" x2="720" y2="480"/>
+    </g>
+  </svg>
+</template>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<dc-import name="LegalPage" title="{{ data.title }}" effective-date="{{ data.effectiveDate }}" blocks="{{ data.blocks }}" hint-size="100%,100%"></dc-import>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      data: {
+        title: 'Code of Conduct',
+        effectiveDate: '14 December 2025',
+        blocks: [
+          { type: 'h2', text: '1. Purpose and Scope' },
+          { type: 'p', text: 'This Code of Conduct sets clear expectations for all members, certified professionals, collaborators, and participants in AIEC activities. It ensures a safe, professional, ethical, and inclusive environment that reflects the Consortium\u2019s mission: to ensure AI systems are developed, deployed, and governed ethically, responsibly, and in compliance with emerging regulations.' },
+          { type: 'p', text: 'This Code applies to:' },
+          { type: 'ul', items: ['All AIEC members', 'All contributors to AIEC events, projects, publications, and online spaces', 'Any use of the AIEC name, brand, platforms, or community channels'] },
+          { type: 'h2', text: '2. Expected Conduct' },
+          { type: 'h3', text: '2.1 Uphold AIEC Values' },
+          { type: 'p', text: 'Members are expected to act in accordance with the AIEC Core Values: Integrity, Accountability, Transparency, Respect for Human Rights, Beneficence, and Collaboration.' },
+          { type: 'h3', text: '2.2 Be Respectful and Professional' },
+          { type: 'p', text: 'Members shall:' },
+          { type: 'ul', items: ['Treat all individuals with dignity, courtesy, and respect.', 'Foster inclusive dialogue, even when opinions differ.', 'Provide constructive feedback grounded in evidence and good faith.', 'Avoid discriminatory, demeaning, or harassing language or behaviours.'] },
+          { type: 'h3', text: '2.3 Maintain High Ethical and Professional Standards' },
+          { type: 'p', text: 'Members commit to:' },
+          { type: 'ul', items: ['Promote responsible AI practices and human-centred design.', 'Represent their competencies accurately; avoid exaggeration of expertise, credentials, or AI capabilities.', 'Disclose relevant conflicts of interest.', 'Preserve confidentiality and data privacy in all professional activities.', 'Perform work honestly, rigorously, and transparently.'] },
+          { type: 'h3', text: '2.4 Promote Inclusive and Safe Spaces' },
+          { type: 'p', text: 'AIEC is committed to maintaining an environment free from discrimination, harassment, and abuse across all AIEC activities, communications, and spaces (in person or online). Harassment includes unwelcome conduct, such as bullying, intimidation, stalking, unwanted attention or contact, sexualised language or imagery, and sexual harassment, that creates a hostile, degrading, or unsafe environment. Conduct may constitute harassment regardless of intent. Breaches may result in removal from AIEC spaces and disciplinary action under this Code.' },
+          { type: 'p', text: 'AIEC does not tolerate:' },
+          { type: 'ul', items: ['Harassment (verbal, physical, psychological, digital)', 'Discrimination based on gender, race, ethnicity, religion, orientation, ability, age, or any protected characteristic', 'Bullying, intimidation, or retaliation', 'Abuse of power or professional influence'] },
+          { type: 'h2', text: '3. Responsible Participation in AIEC Activities' },
+          { type: 'h3', text: '3.1 Events, Workshops, and Online Engagement' },
+          { type: 'p', text: 'Members shall:' },
+          { type: 'ul', items: ['Engage respectfully during discussions, debates, and collaborative work.', 'Avoid dominating conversations; encourage diverse viewpoints.', 'Follow all AIEC facilitation guidelines and instructions from event moderators.', 'Refrain from sharing confidential information without permission.'] },
+          { type: 'h3', text: '3.2 Collaboration and Knowledge Sharing' },
+          { type: 'p', text: 'Members are encouraged to share insights openly while:' },
+          { type: 'ul', items: ['Crediting original authors, research, and collaborators.', 'Avoiding plagiarism or unapproved reuse of proprietary content.', 'Respecting intellectual property and licensing requirements.'] },
+          { type: 'h2', text: '4. Use of AIEC Brand, Logo, and Credentials' },
+          { type: 'p', text: 'All uses must comply with the AIEC Brand Use Policy and the Code of Ethics. Members must NOT:' },
+          { type: 'ul', items: ['Use the AIEC logo or credentials to imply endorsement of products, commercial offerings, or political activities.', 'Modify or distort the logo.', 'Use AIEC credentials or certifications after membership has expired, been suspended, or been revoked.'] },
+          { type: 'p', text: 'Misuse may result in corrective action, including membership suspension.' },
+          { type: 'h2', text: '5. Reporting Concerns and Violations' },
+          { type: 'h3', text: '5.1 How to Report' },
+          { type: 'p', text: 'Members and participants are encouraged to report: ethical concerns, breaches of this Code, misuse of AIEC credentials or the logo, and harassment or unprofessional conduct. Reports can be submitted confidentially to the AIEC Ethics Review Committee.' },
+          { type: 'h3', text: '5.2 Protection from Retaliation' },
+          { type: 'p', text: 'AIEC prohibits retaliation against any person who reports a concern in good faith.' },
+          { type: 'h2', text: '6. Investigation and Enforcement' },
+          { type: 'h3', text: '6.1 Review Process' },
+          { type: 'p', text: 'Concerns will be evaluated by the Ethics Review Committee through fact-finding, interviews if needed, and transparent and impartial assessment.' },
+          { type: 'h3', text: '6.2 Possible Outcomes' },
+          { type: 'p', text: 'Depending on severity, outcomes may include:' },
+          { type: 'ul', items: ['Informal resolution or advisory feedback', 'Written warning or corrective actions', 'Temporary suspension of certification or membership', 'Permanent revocation of certification or membership', 'Removal from AIEC events or online spaces'] },
+          { type: 'p', text: 'Members are expected to fully cooperate with the review process.' },
+          { type: 'h2', text: '7. Commitment to the Community' },
+          { type: 'p', text: 'By participating in the AIEC, members affirm their commitment to uphold this Code of Conduct, promote trust, professionalism, and ethical behaviour, and contribute to a respectful, diverse, and human-centred AI community.' },
+          { type: 'p', text: 'AIEC reserves the right to update this Code to reflect emerging ethical, regulatory, and societal developments in AI.' },
+        ],
+      },
+    };
+  }
+}
+
+</script>
+</body>
+</html>

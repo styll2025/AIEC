@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<dc-import name="ProfilePage"
+  person-name="{{ data.name }}"
+  title="{{ data.title }}"
+  credentials="{{ data.credentials }}"
+  based="{{ data.based }}"
+  company="{{ data.company }}"
+  geo-coverage="{{ data.geoCoverage }}"
+  photo="{{ data.photo }}"
+  bg-paragraphs="{{ data.bgParagraphs }}"
+  support-heading="{{ data.supportHeading }}"
+  support-blocks="{{ data.supportBlocks }}"
+  industries-label="{{ data.industriesLabel }}"
+  industries="{{ data.industries }}"
+  consultation="{{ data.consultation }}"
+  hint-size="100%,100%">
+</dc-import>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      data: {
+        name: 'Prashant Vora',
+        title: 'Vice President, Tata Consultancy Services Ltd',
+        credentials: 'CAIA, CAIP, CAIE, APM',
+        based: 'United Kingdom',
+        company: 'Tata Consultancy Services Ltd',
+        geoCoverage: 'UK, IE',
+        photo: 'assets/head_prashant.png',
+        consultation: false,
+        bgParagraphs: [
+          "Prashant Vora leads the TCS Strategic Solutions & Large Deals Team, UK & Ireland. In this position, Prashant is responsible for growing TCS's business, maximizing the application of technologies to bring innovation to his clients, leading and scaling diverse specialist teams, and leveraging the breadth of TCS's solutions, services and platforms to deliver best-in-class business results for clients.",
+          'Prashant has over 30 years of experience in IT and Professional services, both in delivery and sales – full outsourcing, technology transformation and solutions. His vast experience across multiple locations, including UK&I, Europe, Nordics and North America, makes him an expert in managing global teams of large and complex engagements. He has built specialized teams, established new capabilities, and contributed to building growth-focused long-term client partnerships.',
+        ],
+        supportHeading: "How Prashant 's Work Supports Organisations",
+        supportBlocks: [
+          { body: "Prashant has been with the TCS for more than 27 years and has vast experience in sales, solutions, global program delivery and driving various strategic initiatives. He has held various leadership roles, including Program Director, Solutions Director, Practice Head, Account Management and leading the Large Deals Team. With broad experience across industry domains, technology platforms and geographic locations, Prashant has achieved a successful track record of delivering business growth, executing large technology-led transformation programs, nurturing client relationships and shaping business outcome-led technology transformation requirements." },
+          { body: "Prashant has also contributed to the Tata Group, qualified as a 'Gold' level assessor for TBEM and completed the assessment of two group companies. He assessed 'Tata Chemicals' as a part of the first assessment, with the team winning the 'Star Team of the Year' award. Prashant played an instrumental role in designing TCL's three years digital transformation strategic roadmap for their global business operations." },
+          { body: 'Prashant is actively involved in shaping a contextual and responsible AI-led technology and business transformation journey for clients across multiple sectors, with a primary focus on developing targeted solutions spanning AI for IT and AI for business.' },
+        ],
+        industriesLabel: 'Industries He Focuses On',
+        industries: 'Consulting / Professional Services, Technology, Financial Services, Communication, Media & Information Services, Public Sector, Retail, and Travel, Transportation & Logistics.',
+      },
+    };
+  }
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<dc-import name="ProfilePage"
+  person-name="{{ data.name }}"
+  title="{{ data.title }}"
+  credentials="{{ data.credentials }}"
+  based="{{ data.based }}"
+  company="{{ data.company }}"
+  geo-coverage="{{ data.geoCoverage }}"
+  photo="{{ data.photo }}"
+  bg-paragraphs="{{ data.bgParagraphs }}"
+  support-heading="{{ data.supportHeading }}"
+  support-blocks="{{ data.supportBlocks }}"
+  industries-label="{{ data.industriesLabel }}"
+  industries="{{ data.industries }}"
+  consultation="{{ data.consultation }}"
+  hint-size="100%,100%">
+</dc-import>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      data: {
+        name: 'Jennifer McKinney',
+        title: 'AIEC Co-Founder; AI Governance & Regulatory Intelligence Architect',
+        credentials: 'Certified AI Professional (CAIP); Certified AI Ethicist (CAIE); Certified AI Auditor (CAIA)',
+        based: 'United States',
+        company: 'Independant Consultant',
+        geoCoverage: 'NA, AUS, UK, EU',
+        photo: 'assets/head_jennifer.png',
+        consultation: false,
+        bgParagraphs: [
+          "With 18+ years architecting production systems across MAANG institutions, Global Non-Profits, Retail Supply Chains and Medical Device Companies, Jennifer recognized a gap: regulatory strategy and system design speak different languages. She's seen regulatory roadmaps fail at implementation because engineering teams couldn't operationalize compliance requirements into product architecture.",
+          "As a Certified AI Ethicist and Auditor by Oxford Saïd and trained in agentic AI at Johns Hopkins University, she translates one language into the other. She advises AI product strategy where regulatory requirements become first-class citizens in architecture, not a documentation footnote. Companies winning in AI-Regulatory ecosystem, don't separate strategy from engineering.",
+        ],
+        supportHeading: "How Jennifer's Work Supports Organisations",
+        supportBlocks: [
+          { body: 'Jennifer works closely with product, legal, and engineering teams to translate regulatory and ethical requirements into practical design choices that teams can implement with confidence.' },
+          { body: 'Her approach supports real-world execution, helping organisations build AI systems where governance, accountability, and compliance are embedded into everyday product decisions rather than treated as an afterthought.' },
+        ],
+        industriesLabel: 'Industries She Focuses On',
+        industries: 'Non Profit | Retail | Supply Chains | Medical Devices | Consulting / Professional Services | Technology',
+      },
+    };
+  }
+}
+
+</script>
+</body>
+</html>

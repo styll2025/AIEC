@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style> body { margin: 0; } a { text-decoration: none; } </style>
+</helmet>
+
+<div style="font-family: 'Work Sans', sans-serif; background: #ffffff; color: #14182c; width: 100%; overflow-x: hidden;" data-screen-label="Membership Signup">
+
+  <div style="position: relative; background: linear-gradient(135deg, #0d1b26 0%, #14182c 55%, #0f2b28 100%);">
+    <dc-import name="SiteNav" active="join" dark="{{ true }}" hint-size="100%,90px"></dc-import>
+    <div style="max-width: 1180px; margin: 0 auto; padding: 64px 56px 80px;">
+      <p style="color: #a99bf5; font-size: 12.5px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin: 0 0 18px;">Apply</p>
+      <h1 style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 38px; color: #f6f4ee; margin: 0 0 14px;">AIEC Membership Registration</h1>
+      <p style="color: #cdd0e0; font-size: 16px; margin: 0; max-width: 620px;">Tell us about yourself and your certification to start your AIEC membership application.</p>
+    </div>
+  </div>
+
+  <div style="background: #ffffff; padding: 72px 56px; min-height: 420px; display: flex; justify-content: center;">
+    <div style="width: 100%; max-width: 680px;">
+
+      <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
+        <div style="border: 1px solid rgba(20,24,44,0.12); border-radius: 4px; padding: 48px 40px; text-align: center; border-top: 3px solid #6d5ce8;">
+          <h3 style="font-family: 'Source Serif 4', serif; font-size: 21px; color: #14182c; margin: 0 0 16px;">Application received</h3>
+          <p style="font-size: 14.5px; color: #43465a; line-height: 1.7; margin: 0 0 24px;">Thank you for applying to the AIEC membership. We'll verify your certification with the issuing body and follow up by email with your profile and next steps.</p>
+          <a href="Home.dc.html" style="color: #14182c; font-weight: 600; font-size: 14px; border-bottom: 1.5px solid #6d5ce8;">Return to Home</a>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ notSubmitted }}" hint-placeholder-val="{{ true }}">
+        <div>
+          <!-- Progress -->
+          <div style="display: flex; gap: 8px; margin-bottom: 12px;">
+            <sc-for list="{{ stepDots }}" as="d" hint-placeholder-count="4">
+              <div style="flex: 1; height: 4px; border-radius: 2px; background: {{ d.color }};"></div>
+            </sc-for>
+          </div>
+          <p style="font-size: 12.5px; color: #7b7e91; margin: 0 0 32px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase;">{{ stepLabel }}</p>
+
+          <!-- STEP 1 -->
+          <sc-if value="{{ isStep1 }}" hint-placeholder-val="{{ true }}">
+            <h2 style="font-family: 'Source Serif 4', serif; font-size: 22px; margin: 0 0 8px;">Your Personal Details</h2>
+            <p style="font-size: 14px; color: #7b7e91; margin: 0 0 28px;">Let's start with the basics so we know how to reach you.</p>
+            <div style="display: flex; flex-direction: column; gap: 18px;">
+              <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+                <div style="flex: 1 1 220px;">
+                  <label style="font-size: 13px; font-weight: 600; color: #43465a; display: block; margin: 0 0 6px;">First Name *</label>
+                  <input type="text" placeholder="First name" value="{{ firstName }}" oninput="{{ onFirstNameChange }}"
+                    style="width: 100%; box-sizing: border-box; padding: 12px 14px; border-radius: 3px; border: 1.5px solid {{ firstNameBorder }}; font-size: 14.5px; font-family: 'Work Sans', sans-serif;" />
+                </div>
+                <div style="flex: 1 1 220px;">
+                  <label style="font-size: 13px; font-weight: 600; color: #43465a; display: block; margin: 0 0 6px;">Last Name *</label>
+                  <input type="text" placeholder="Last name" value="{{ lastName }}" oninput="{{ onLastNameChange }}"
+                    style="width: 100%; box-sizing: border-box; padding: 12px 14px; border-radius: 3px; border: 1.5px solid {{ lastNameBorder }}; font-size: 14.5px; font-family: 'Work Sans', sans-serif;" />
+                </div>
+              </div>
+              <div>
+                <label style="font-size: 13px; font-weight: 600; color: #43465a; display: block; margin: 0 0 6px;">Email *</label>
+                <input type="email" placeholder="Email" value="{{ email }}" oninput="{{ onEmailChange }}"
+                  style="width: 100%; box-sizing: border-box; padding: 12px 14px; border-radius: 3px; border: 1.5px solid {{ emailBorder }}; font-size: 14.5px; font-family: 'Work Sans', sans-serif;" />
+              </div>
+              <div>
+                <label style="font-size: 13px; font-weight: 600; color: #43465a; display: block; margin: 0 0 6px;">LinkedIn Profile *</label>
+                <input type="text" placeholder="e.g. linkedin.com/in/yourname" value="{{ linkedin }}" oninput="{{ onLinkedinChange }}"
+                  style="width: 100%; box-sizing: border-box; padding: 12px 14px; border-radius: 3px; border: 1.5px solid {{ linkedinBorder }}; font-size: 14.5px; font-family: 'Work Sans', sans-serif;" />
+              </div>
+            </div>
+          </sc-if>
+
+          <!-- STEP 2 -->
+          <sc-if value="{{ isStep2 }}" hint-placeholder-val="{{ false }}">
+            <h2 style="font-family: 'Source Serif 4', serif; font-size: 22px; margin: 0 0 8px;">Your Current Role</h2>
+            <p style="font-size: 14px; color: #7b7e91; margin: 0 0 28px;">Tell us where you're currently working and how you describe your role.</p>
+            <div style="display: flex; flex-direction: column; gap: 18px;">
+              <div>
+                <label style="font-size: 13px; font-weight: 600; color: #43465a; display: block; margin: 0 0 6px;">Professional Title *</label>
+                <input type="text" placeholder="Current role or professional title" value="{{ title }}" oninput="{{ onTitleChange }}"
+                  style="width: 100%; box-sizing: border-box; padding: 12px 14px; border-radius: 3px; border: 1.5px solid {{ titleBorder }}; font-size: 14.5px; font-family: 'Work Sans', sans-serif;" />
+              </div>
+              <div>
+                <label style="font-size: 13px; font-weight: 600; color: #43465a; display: block; margin: 0 0 6px;">Company *</label>
+                <input type="text" placeholder="Company or organisation" value="{{ company }}" oninput="{{ onCompanyChange }}"
+                  style="width: 100%; box-sizing: border-box; padding: 12px 14px; border-radius: 3px; border: 1.5px solid {{ companyBorder }}; font-size: 14.5px; font-family: 'Work Sans', sans-serif;" />
+              </div>
+              <div>
+                <label style="font-size: 13px; font-weight: 600; color: #43465a; display: block; margin: 0 0 6px;">Website</label>
+                <input type="text" placeholder="Website" value="{{ website }}" oninput="{{ onWebsiteChange }}"
+                  style="width: 100%; box-sizing: border-box; padding: 12px 14px; border-radius: 3px; border: 1.5px solid #d4d6de; font-size: 14.5px; font-family: 'Work Sans', sans-serif;" />
+              </div>
+            </div>
+          </sc-if>
+
+          <!-- STEP 3 -->
+          <sc-if value="{{ isStep3 }}" hint-placeholder-val="{{ false }}">
+            <h2 style="font-family: 'Source Serif 4', serif; font-size: 22px; margin: 0 0 8px;">Your Profile &amp; Expertise</h2>
+            <p style="font-size: 14px; color: #7b7e91; margin: 0 0 28px;">This helps us understand your background and how you'd like to contribute to the AI Ethics Consortium.</p>
+            <div style="display: flex; flex-direction: column; gap: 22px;">
+              <div>
+                <label style="font-size: 13px; font-weight: 600; color: #43465a; display: block; margin: 0 0 6px;">Brief Professional Summary *</label>
+                <textarea placeholder="2–4 sentences on your background, current work and interest in AI ethics / governance." value="{{ summary }}" oninput="{{ onSummaryChange }}" rows="4"
+                  style="width: 100%; box-sizing: border-box; padding: 12px 14px; border-radius: 3px; border: 1.5px solid {{ summaryBorder }}; font-size: 14.5px; font-family: 'Work Sans', sans-serif; resize: vertical;"></textarea>
+              </div>
+              <div>
+                <label style="font-size: 13px; font-weight: 600; color: #43465a; display: block; margin: 0 0 6px;">How Your Work Supports Organisations *</label>
+                <textarea value="{{ howSupports }}" oninput="{{ onHowSupportsChange }}" rows="4"
+                  style="width: 100%; box-sizing: border-box; padding: 12px 14px; border-radius: 3px; border: 1.5px solid {{ howSupportsBorder }}; font-size: 14.5px; font-family: 'Work Sans', sans-serif; resize: vertical;"></textarea>
+              </div>
+              <div>
+                <label style="font-size: 13px; font-weight: 600; color: #43465a; display: block; margin: 0 0 10px;">Industries You Work With *</label>
+                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 10px; max-height: 260px; overflow-y: auto; border: 1px solid #e4e5ec; border-radius: 3px; padding: 16px;">
+                  <sc-for list="{{ industryOptions }}" as="ind" hint-placeholder-count="10">
+                    <label style="display: flex; align-items: center; gap: 8px; font-size: 13.5px; color: #43465a; cursor: pointer;">
+                      <input type="checkbox" checked="{{ ind.checked }}" onchange="{{ ind.onToggle }}" style="width: 15px; height: 15px; accent-color: #6d5ce8;" />
+                      {{ ind.name }}
+                    </label>
+                  </sc-for>
+                </div>
+                <sc-if value="{{ showIndustriesError }}" hint-placeholder-val="{{ false }}">
+                  <p style="color: #c0392b; font-size: 12.5px; margin: 6px 0 0;">Please select at least one industry.</p>
+                </sc-if>
+              </div>
+              <div>
+                <label style="font-size: 13px; font-weight: 600; color: #43465a; display: block; margin: 0 0 6px;">Professional Photo *</label>
+                <p style="font-size: 12.5px; color: #7b7e91; line-height: 1.6; margin: 0 0 10px;">Please upload a clear, recent, high-resolution headshot (head and shoulders) with good lighting and a neutral, uncluttered background. This image will be used in the AIEC member directory and communications.</p>
+                <input type="file" accept="image/*" onchange="{{ onPhotoChange }}"
+                  style="width: 100%; box-sizing: border-box; padding: 12px 14px; border-radius: 3px; border: 1.5px dashed #c7c9d3; font-size: 13.5px; font-family: 'Work Sans', sans-serif; background: #fafafa;" />
+              </div>
+            </div>
+          </sc-if>
+
+          <!-- STEP 4 -->
+          <sc-if value="{{ isStep4 }}" hint-placeholder-val="{{ false }}">
+            <h2 style="font-family: 'Source Serif 4', serif; font-size: 22px; margin: 0 0 8px;">Credentials &amp; Regions</h2>
+            <p style="font-size: 14px; color: #7b7e91; margin: 0 0 28px;">Share any relevant certifications and where you currently operate. This will appear in the AIEC member directory (where applicable).</p>
+            <div style="display: flex; flex-direction: column; gap: 18px;">
+              <div>
+                <label style="font-size: 13px; font-weight: 600; color: #43465a; display: block; margin: 0 0 6px;">Certifications &amp; Qualifications *</label>
+                <input type="text" placeholder="e.g. CAIP, CAIE, CAIA" value="{{ certifications }}" oninput="{{ onCertificationsChange }}"
+                  style="width: 100%; box-sizing: border-box; padding: 12px 14px; border-radius: 3px; border: 1.5px solid {{ certificationsBorder }}; font-size: 14.5px; font-family: 'Work Sans', sans-serif;" />
+              </div>
+              <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+                <div style="flex: 1 1 260px;">
+                  <label style="font-size: 13px; font-weight: 600; color: #43465a; display: block; margin: 0 0 6px;">Credential ID</label>
+                  <input type="text" placeholder="Certificate number or URL" value="{{ credentialId }}" oninput="{{ onCredentialIdChange }}"
+                    style="width: 100%; box-sizing: border-box; padding: 12px 14px; border-radius: 3px; border: 1.5px solid #d4d6de; font-size: 14.5px; font-family: 'Work Sans', sans-serif;" />
+                </div>
+                <div style="flex: 1 1 260px;">
+                  <label style="font-size: 13px; font-weight: 600; color: #43465a; display: block; margin: 0 0 6px;">Associated Credential Organisation</label>
+                  <input type="text" placeholder="Issuing body" value="{{ credentialOrg }}" oninput="{{ onCredentialOrgChange }}"
+                    style="width: 100%; box-sizing: border-box; padding: 12px 14px; border-radius: 3px; border: 1.5px solid #d4d6de; font-size: 14.5px; font-family: 'Work Sans', sans-serif;" />
+                </div>
+              </div>
+              <div>
+                <label style="font-size: 13px; font-weight: 600; color: #43465a; display: block; margin: 0 0 6px;">Regions You Operate *</label>
+                <input type="text" placeholder="e.g. EU, UK, NA, APAC, Global" value="{{ regions }}" oninput="{{ onRegionsChange }}"
+                  style="width: 100%; box-sizing: border-box; padding: 12px 14px; border-radius: 3px; border: 1.5px solid {{ regionsBorder }}; font-size: 14.5px; font-family: 'Work Sans', sans-serif;" />
+              </div>
+              <div style="border-top: 1px solid rgba(20,24,44,0.1); padding-top: 20px; margin-top: 6px;">
+                <p style="font-size: 13px; font-weight: 600; color: #43465a; margin: 0 0 10px;">Please read the AIEC Code of Conduct before submitting your application. *</p>
+                <label style="display: flex; align-items: flex-start; gap: 10px; font-size: 13.5px; color: #43465a; cursor: pointer;">
+                  <input type="checkbox" checked="{{ conductAgreed }}" onchange="{{ onConductToggle }}" style="width: 16px; height: 16px; margin-top: 2px; accent-color: #6d5ce8;" />
+                  I confirm that I have read, understood, and agree to follow the AIEC Code of Conduct.
+                </label>
+                <sc-if value="{{ showConductError }}" hint-placeholder-val="{{ false }}">
+                  <p style="color: #c0392b; font-size: 12.5px; margin: 8px 0 0;">Please confirm you agree to the Code of Conduct.</p>
+                </sc-if>
+              </div>
+            </div>
+          </sc-if>
+
+          <!-- NAV BUTTONS -->
+          <div style="display: flex; justify-content: space-between; margin-top: 40px;">
+            <sc-if value="{{ showBack }}" hint-placeholder-val="{{ false }}">
+              <button type="button" onclick="{{ onBack }}" style="background: none; border: 1.5px solid #d4d6de; color: #43465a; font-weight: 600; font-size: 14px; padding: 12px 26px; border-radius: 3px; cursor: pointer; font-family: 'Work Sans', sans-serif;">Back</button>
+            </sc-if>
+            <sc-if value="{{ hideBack }}" hint-placeholder-val="{{ true }}">
+              <div></div>
+            </sc-if>
+            <sc-if value="{{ showNext }}" hint-placeholder-val="{{ true }}">
+              <button type="button" onclick="{{ onNext }}" style="background: #6d5ce8; color: #fff; font-weight: 600; font-size: 14.5px; padding: 13px 32px; border-radius: 3px; border: none; cursor: pointer; font-family: 'Work Sans', sans-serif;">Next</button>
+            </sc-if>
+            <sc-if value="{{ showSubmit }}" hint-placeholder-val="{{ false }}">
+              <button type="button" onclick="{{ onSubmit }}" style="background: #6d5ce8; color: #fff; font-weight: 600; font-size: 14.5px; padding: 13px 32px; border-radius: 3px; border: none; cursor: pointer; font-family: 'Work Sans', sans-serif;">Submit</button>
+            </sc-if>
+          </div>
+        </div>
+      </sc-if>
+    </div>
+  </div>
+
+  <dc-import name="SiteFooter" hint-size="100%,340px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const INDUSTRY_LIST = [
+  'Technology', 'Healthcare', 'Pharmaceuticals / Life Sciences', 'Education', 'Financial Services',
+  'Banking', 'Insurance', 'Consulting / Professional Services', 'Government / Public Sector',
+  'Non-profits / NGOs', 'Retail', 'E-commerce', 'Manufacturing', 'Transportation',
+  'Logistics / Supply Chain', 'Energy', 'Utilities', 'Telecommunications', 'Media & Entertainment',
+  'Hospitality', 'Travel & Tourism', 'Real Estate', 'Construction', 'Automotive',
+  'Agriculture / Agritech', 'Food & Beverage', 'Legal', 'Human Resources / Talent & Recruitment',
+  'Research & Academia', 'Cybersecurity', 'Gaming', 'Sports', 'Research', 'Consumer Goods / FMCG', 'Other',
+];
+
+class Component extends DCLogic {
+  state = {
+    step: 1,
+    submitted: false,
+    touched: {},
+    firstName: '', lastName: '', email: '', linkedin: '',
+    title: '', company: '', website: '',
+    summary: '', howSupports: '', industries: {}, photoName: '',
+    certifications: '', credentialId: '', credentialOrg: '', regions: '', conductAgreed: false,
+  };
+
+  isValidEmail(e) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
+  }
+
+  validateStep(step) {
+    const s = this.state;
+    if (step === 1) {
+      return s.firstName.trim() && s.lastName.trim() && this.isValidEmail(s.email.trim()) && s.linkedin.trim();
+    }
+    if (step === 2) {
+      return s.title.trim() && s.company.trim();
+    }
+    if (step === 3) {
+      const anyIndustry = Object.values(s.industries).some(v => v);
+      return s.summary.trim() && s.howSupports.trim() && anyIndustry;
+    }
+    if (step === 4) {
+      return s.certifications.trim() && s.regions.trim() && s.conductAgreed;
+    }
+    return true;
+  }
+
+  renderVals() {
+    const s = this.state;
+    const okColor = '#d4d6de';
+    const errColor = '#c0392b';
+    const t = s.touched;
+
+    const industryOptions = INDUSTRY_LIST.map(name => ({
+      name,
+      checked: !!s.industries[name],
+      onToggle: () => {
+        const next = { ...this.state.industries };
+        next[name] = !next[name];
+        this.setState({ industries: next });
+      },
+    }));
+
+    const stepLabels = ['Step 1 · Your Personal Details', 'Step 2 · Your Current Role', 'Step 3 · Your Profile & Expertise', 'Step 4 · Credentials & Regions'];
+    const stepDots = [1, 2, 3, 4].map(n => ({ color: n <= s.step ? '#6d5ce8' : '#e4e5ec' }));
+
+    return {
+      submitted: s.submitted,
+      notSubmitted: !s.submitted,
+      isStep1: s.step === 1, isStep2: s.step === 2, isStep3: s.step === 3, isStep4: s.step === 4,
+      stepLabel: stepLabels[s.step - 1],
+      stepDots,
+      showBack: s.step > 1,
+      hideBack: s.step === 1,
+      showNext: s.step < 4,
+      showSubmit: s.step === 4,
+
+      firstName: s.firstName, lastName: s.lastName, email: s.email, linkedin: s.linkedin,
+      firstNameBorder: t.step1 && !s.firstName.trim() ? errColor : okColor,
+      lastNameBorder: t.step1 && !s.lastName.trim() ? errColor : okColor,
+      emailBorder: t.step1 && !this.isValidEmail(s.email.trim()) ? errColor : okColor,
+      linkedinBorder: t.step1 && !s.linkedin.trim() ? errColor : okColor,
+      onFirstNameChange: (e) => this.setState({ firstName: e.target.value }),
+      onLastNameChange: (e) => this.setState({ lastName: e.target.value }),
+      onEmailChange: (e) => this.setState({ email: e.target.value }),
+      onLinkedinChange: (e) => this.setState({ linkedin: e.target.value }),
+
+      title: s.title, company: s.company, website: s.website,
+      titleBorder: t.step2 && !s.title.trim() ? errColor : okColor,
+      companyBorder: t.step2 && !s.company.trim() ? errColor : okColor,
+      onTitleChange: (e) => this.setState({ title: e.target.value }),
+      onCompanyChange: (e) => this.setState({ company: e.target.value }),
+      onWebsiteChange: (e) => this.setState({ website: e.target.value }),
+
+      summary: s.summary, howSupports: s.howSupports,
+      summaryBorder: t.step3 && !s.summary.trim() ? errColor : okColor,
+      howSupportsBorder: t.step3 && !s.howSupports.trim() ? errColor : okColor,
+      onSummaryChange: (e) => this.setState({ summary: e.target.value }),
+      onHowSupportsChange: (e) => this.setState({ howSupports: e.target.value }),
+      industryOptions,
+      showIndustriesError: t.step3 && !Object.values(s.industries).some(v => v),
+      onPhotoChange: (e) => this.setState({ photoName: (e.target.files && e.target.files[0]) ? e.target.files[0].name : '' }),
+
+      certifications: s.certifications, credentialId: s.credentialId, credentialOrg: s.credentialOrg, regions: s.regions,
+      certificationsBorder: t.step4 && !s.certifications.trim() ? errColor : okColor,
+      regionsBorder: t.step4 && !s.regions.trim() ? errColor : okColor,
+      onCertificationsChange: (e) => this.setState({ certifications: e.target.value }),
+      onCredentialIdChange: (e) => this.setState({ credentialId: e.target.value }),
+      onCredentialOrgChange: (e) => this.setState({ credentialOrg: e.target.value }),
+      onRegionsChange: (e) => this.setState({ regions: e.target.value }),
+      conductAgreed: s.conductAgreed,
+      onConductToggle: () => this.setState({ conductAgreed: !this.state.conductAgreed }),
+      showConductError: t.step4 && !s.conductAgreed,
+
+      onNext: () => {
+        const key = 'step' + s.step;
+        if (this.validateStep(s.step)) {
+          this.setState({ step: s.step + 1, touched: { ...s.touched, [key]: false } });
+        } else {
+          this.setState({ touched: { ...s.touched, [key]: true } });
+        }
+      },
+      onBack: () => this.setState({ step: s.step - 1 }),
+      onSubmit: () => {
+        if (this.validateStep(4)) {
+          this.setState({ submitted: true });
+        } else {
+          this.setState({ touched: { ...s.touched, step4: true } });
+        }
+      },
+    };
+  }
+}
+
+</script>
+</body>
+</html>

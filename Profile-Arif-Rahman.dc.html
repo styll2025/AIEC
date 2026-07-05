@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<dc-import name="ProfilePage"
+  person-name="{{ data.name }}"
+  title="{{ data.title }}"
+  credentials="{{ data.credentials }}"
+  based="{{ data.based }}"
+  company="{{ data.company }}"
+  geo-coverage="{{ data.geoCoverage }}"
+  extra-label="{{ data.extraLabel }}"
+  extra-value="{{ data.extraValue }}"
+  photo="{{ data.photo }}"
+  bg-paragraphs="{{ data.bgParagraphs }}"
+  support-heading="{{ data.supportHeading }}"
+  support-blocks="{{ data.supportBlocks }}"
+  industries-label="{{ data.industriesLabel }}"
+  industries="{{ data.industries }}"
+  consultation="{{ data.consultation }}"
+  hint-size="100%,100%">
+</dc-import>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      data: {
+        name: 'Arif Rahman',
+        title: 'Head of Data & AI',
+        credentials: 'CAIA, CAIP, CAIE, APM',
+        based: 'United Arab Emirates',
+        company: 'UAE – OBT',
+        geoCoverage: 'UK, EU, GCC',
+        extraLabel: 'Website',
+        extraValue: 'obt.live',
+        photo: 'assets/head_arif.png',
+        consultation: false,
+        bgParagraphs: [
+          'A seasoned Head of Data & AI and Digital Transformation Leader focused on helping organisations execute on their artificial intelligence ambitions through strategy, governance, and real-world implementation. He holds multiple professional certifications including CAIA, CAIP, CAIE, and APM which reflect depth in analytics, AI practices, ethical implementation, and project management. His experience spans leading data engineering and AI initiatives that align senior leadership, cross-functional teams, and technology execution to drive measurable business outcomes.',
+        ],
+        supportHeading: "How Arif's Work Supports Organisations",
+        supportBlocks: [
+          { body: 'AI Strategy & Execution: Helping organisations define clear strategic purpose and align AI initiatives with business goals to avoid common pitfalls of misaligned expectations and failed pilots.' },
+          { body: 'Driving Adoption & Value Realisation: I emphasise solving real operational problems early, focusing on actionable insights and iterative learning, which accelerates time-to-value and supports sustainable AI adoption across teams.' },
+          { body: 'Ethical, Responsible AI Leadership: Through content and thought leadership, you advocate for ethical AI practices, foster AI literacy within leadership ranks, and bring attention to cultural and governance considerations that reduce risk and build trust.' },
+          { body: 'Transformation Leadership: My work connects data engineering rigour with strategic transformation, ensuring organisations not only adopt AI technology but also embed analytics-driven decision-making into core processes.' },
+        ],
+        industriesLabel: 'Industries He Focuses On',
+        industries: 'Technology, Education, Consulting / Professional Services, Government / Public Sector, Non-profits / NGOs, Retail, Manufacturing, Media & Entertainment',
+      },
+    };
+  }
+}
+
+</script>
+</body>
+</html>

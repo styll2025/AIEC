@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<dc-import name="ProfilePage"
+  person-name="{{ data.name }}"
+  title="{{ data.title }}"
+  credentials="{{ data.credentials }}"
+  based="{{ data.based }}"
+  company="{{ data.company }}"
+  geo-coverage="{{ data.geoCoverage }}"
+  photo="{{ data.photo }}"
+  bg-paragraphs="{{ data.bgParagraphs }}"
+  support-heading="{{ data.supportHeading }}"
+  support-blocks="{{ data.supportBlocks }}"
+  industries-label="{{ data.industriesLabel }}"
+  industries="{{ data.industries }}"
+  consultation="{{ data.consultation }}"
+  hint-size="100%,100%">
+</dc-import>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      data: {
+        name: 'John McGann',
+        title: 'Global Programme Director, Albany Ltd',
+        credentials: 'Certified AI Professional (CAIP); Certified AI Ethicist (CAIE); Certified AI Auditor (CAIA)',
+        based: 'United Kingdom',
+        company: 'Albany Ltd',
+        geoCoverage: 'UK, EU, US, Canada, UAE and Australia',
+        photo: 'assets/head_john.png',
+        consultation: false,
+        bgParagraphs: [
+          "I'm a non-practising solicitor and an IT and SAP transformation programme director, now a Certified AI Auditor (CAIA) trained through the University of Oxford's Saïd Business School. After 28 years leading enterprise technology and change programmes, I run an independent AI governance practice that assesses and documents organisations' AI systems against the EU AI Act and other regional frameworks.",
+          'The mix of a legal grounding and hands-on delivery experience is what drew me to AI ethics and governance — making responsible, well-governed AI something organisations can evidence through structured, independent assessment, not just aspire to.',
+        ],
+        supportHeading: "How John's Work Supports Organisations",
+        supportBlocks: [
+          { body: "I help organisations adopt AI responsibly and prove it. Using the oxethica governance platform, I classify each AI system's risk and assess it across governance, data, fairness, transparency, human oversight and technical robustness, producing regulator-ready documentation — a Risk and Confidence Score, a Model Card, a full conformity assessment, and a prioritised remediation roadmap." },
+          { body: "That gives boards, customers and regulators independent assurance that an organisation's AI meets its obligations, lowers regulatory and reputational risk, and clears a common blocker to procurement and market access — across the EU, UK, US, UAE, Canada and Australia. My background — a legal qualification (non-practising solicitor) alongside enterprise IT and SAP delivery — means I read both the regulatory intent and how systems are actually built and run, while my engagements remain governance and technical assessment rather than legal advice." },
+        ],
+        industriesLabel: 'Industries He Focuses On',
+        industries: 'Technology, Consulting / Professional Services, Financial Services, Banking, Insurance, Healthcare, Pharmaceuticals / Life Sciences, Education, Government / Public Sector, Energy, Utilities, Human Resources / Talent & Recruitment, Manufacturing, Retail, Logistics / Supply Chain, Telecommunications, E-commerce, Transportation, Research & Academia, Cybersecurity, Consumer Goods / FMCG, Legal.',
+      },
+    };
+  }
+}
+
+</script>
+</body>
+</html>

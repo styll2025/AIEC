@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<dc-import name="ProfilePage"
+  person-name="{{ data.name }}"
+  title="{{ data.title }}"
+  credentials="{{ data.credentials }}"
+  based="{{ data.based }}"
+  company="{{ data.company }}"
+  geo-coverage="{{ data.geoCoverage }}"
+  photo="{{ data.photo }}"
+  bg-paragraphs="{{ data.bgParagraphs }}"
+  support-heading="{{ data.supportHeading }}"
+  support-blocks="{{ data.supportBlocks }}"
+  industries-label="{{ data.industriesLabel }}"
+  industries="{{ data.industries }}"
+  consultation="{{ data.consultation }}"
+  hint-size="100%,100%">
+</dc-import>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      data: {
+        name: 'Rhonda Sharif',
+        title: 'AI Governance Specialist & Solutions Architect',
+        credentials: 'Certified AI Professional (CAIP), Certified AI Auditor (CAIA), Certified AI Ethicist (CAIE)',
+        based: 'USA',
+        company: 'Independent Consultant',
+        geoCoverage: 'US, EU, UK',
+        photo: 'assets/head_rhonda.png',
+        consultation: false,
+        bgParagraphs: [
+          "As a Certified AI Professional (CAIP), Certified AI Auditor (CAIA), and Certified AI Ethicist (CAIE) with training from Oxford Saïd Business School's AI Programme and an MBA, I specialize in AI governance and solutions architecture.",
+          'I created AURITEX, a framework that helps organizations move from informal AI deployment practices to clear, accountable, and audit-ready decision processes. My focus is enabling organizations to confidently answer a question that increasingly matters to regulators, executives, and boards: "Who approved this AI system, and how was that decision made?"',
+        ],
+        supportHeading: "How Rhonda's Work Supports Organisations",
+        supportBlocks: [
+          { body: 'I help organizations establish clear AI deployment authorization processes before issues arise. This includes defining who has decision authority over AI systems, what evidence is required for approval, and how those decisions are documented to withstand audit, oversight, and internal review.' },
+          { body: 'I work primarily with regulated and high-stakes organizations, including fintech, healthtech, insurtech, government contracting, and HR technology, where AI deployment decisions carry real legal, ethical, and reputational consequences.' },
+        ],
+        industriesLabel: 'Industries She Focuses On',
+        industries: 'Technology, Healthcare, Insurance, Consulting / Professional Services, Government / Public Sector, Legal, Human Resources / Talent & Recruitment, Financial Services',
+      },
+    };
+  }
+}
+
+</script>
+</body>
+</html>

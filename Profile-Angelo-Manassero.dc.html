@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<dc-import name="ProfilePage"
+  person-name="{{ data.name }}"
+  title="{{ data.title }}"
+  credentials="{{ data.credentials }}"
+  based="{{ data.based }}"
+  company="{{ data.company }}"
+  geo-coverage="{{ data.geoCoverage }}"
+  extra-label="{{ data.extraLabel }}"
+  extra-value="{{ data.extraValue }}"
+  photo="{{ data.photo }}"
+  bg-paragraphs="{{ data.bgParagraphs }}"
+  support-heading="{{ data.supportHeading }}"
+  support-blocks="{{ data.supportBlocks }}"
+  industries-label="{{ data.industriesLabel }}"
+  industries="{{ data.industries }}"
+  consultation="{{ data.consultation }}"
+  hint-size="100%,100%">
+</dc-import>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      data: {
+        name: 'Angelo Manassero',
+        title: 'Corporate Philosopher | AI Ethics & Governance Advisor',
+        credentials: 'CAIA, CAIP, CAIE, APM',
+        based: 'Italy',
+        company: 'Independent Consultant',
+        geoCoverage: 'UK, EU, International',
+        extraLabel: 'Website',
+        extraValue: 'angelomanassero.it',
+        photo: 'assets/head_angelo.png',
+        consultation: false,
+        bgParagraphs: [
+          'Angelo Manassero, CAIP, CAIA, CAIE, is an independent consultant in AI ethics, governance, and corporate philosophy with over 20 years of international experience in strategy, negotiation, commercial leadership, and business transformation. With a background in business and advanced academic training in philosophy, he brings a distinctive perspective to responsible AI, combining ethical reflection, critical thinking, and practical organisational insight. His work is supported by Oxford Saïd certifications in AI Ethics, Regulation & Compliance and related executive education in ethics, innovation, and strategy.',
+        ],
+        supportHeading: "How Angelo 's Work Supports Organisations",
+        supportBlocks: [
+          { body: 'He supports organizations by helping leaders embed ethical reflection, governance, and accountability into AI-related decisions and innovation processes. His work strengthens responsible AI adoption, improves transparency and judgment, reduces ethical and reputational risk, and supports more human-centred and sustainable organisational choices.' },
+        ],
+        industriesLabel: 'Industries He Focuses On',
+        industries: 'Consulting / Professional Services, Non-profits / NGOs, Education, Government / Public Sector, Human Resources / Talent & Recruitment, Research & Academia, Sports',
+      },
+    };
+  }
+}
+
+</script>
+</body>
+</html>

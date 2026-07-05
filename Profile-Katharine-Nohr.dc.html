@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<dc-import name="ProfilePage"
+  person-name="{{ data.name }}"
+  title="{{ data.title }}"
+  credentials="{{ data.credentials }}"
+  based="{{ data.based }}"
+  company="{{ data.company }}"
+  geo-coverage="{{ data.geoCoverage }}"
+  extra-label="{{ data.extraLabel }}"
+  extra-value="{{ data.extraValue }}"
+  photo="{{ data.photo }}"
+  bg-paragraphs="{{ data.bgParagraphs }}"
+  support-heading="{{ data.supportHeading }}"
+  support-blocks="{{ data.supportBlocks }}"
+  industries-label="{{ data.industriesLabel }}"
+  industries="{{ data.industries }}"
+  consultation="{{ data.consultation }}"
+  hint-size="100%,100%">
+</dc-import>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      data: {
+        name: 'Katharine Nohr',
+        title: 'AIEC Co-Founder; AI Ethics Consultant',
+        credentials: 'Certified AI Professional (CAIP); Certified AI Ethicist (CAIE); Certified AI Auditor (CAIA)',
+        based: 'United States of America',
+        company: 'Nohr AI Ethics',
+        geoCoverage: 'USA; Pacific Rim; EU; Middle East',
+        extraLabel: 'Website',
+        extraValue: 'http://nohraiethics.com',
+        photo: 'assets/head_katharine.png',
+        consultation: false,
+        bgParagraphs: [
+          "Katharine M. Nohr, J.D., CAIP, CAIA, CAIE, is an AI ethics consultant and certified AI auditor with advanced training from the Oxford Saïd Business School in AI Ethics, Regulation & Compliance, and the Climate Emergency Programme. A former Honolulu Judge and experienced attorney, she brings deep expertise in legal risk, decision-making, and responsible technology governance across insurance, sports, and emerging-tech sectors.",
+        ],
+        supportHeading: "How Katharine's Work Supports Organisations",
+        supportBlocks: [
+          { body: 'She supports organizations by evaluating AI practices, developing ethical oversight structures, and guiding leaders in the responsible deployment of AI that reduces risk, enhances transparency, and protects stakeholders.' },
+        ],
+        industriesLabel: 'Industries She Focuses On',
+        industries: 'Healthcare | Insurance | Consulting / Professional Services | Media & Entertainment | Travel & Tourism | Gaming | Legal | Sports | Other',
+      },
+    };
+  }
+}
+
+</script>
+</body>
+</html>

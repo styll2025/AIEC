@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<dc-import name="LegalPage" title="{{ data.title }}" effective-date="{{ data.effectiveDate }}" blocks="{{ data.blocks }}" hint-size="100%,100%"></dc-import>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      data: {
+        title: 'Data Retention & Deletion Policy',
+        effectiveDate: '14 December 2025',
+        blocks: [
+          { type: 'p', text: 'This policy describes how long AIEC stores personal data and the conditions under which it is deleted, anonymized, or archived.' },
+          { type: 'h2', text: '2. Retention Principles' },
+          { type: 'p', text: 'AIEC retains data only for:' },
+          { type: 'ul', items: ['Membership administration', 'Certification and credential verification', 'Nonprofit governance and legal compliance', 'Fraud prevention and security', 'Historical or archival purposes where appropriate'] },
+          { type: 'p', text: 'We do not keep data longer than necessary.' },
+          { type: 'h2', text: '3. Retention Schedule' },
+          { type: 'h3', text: '3.1 Application & Membership Records' },
+          { type: 'p', text: 'Includes: applications, credentials, documents, verification notes. Retention: 7 years after membership ends. Reason: nonprofit legal obligations; record integrity.' },
+          { type: 'h3', text: '3.2 Public Directory Profiles' },
+          { type: 'p', text: 'Visible publicly only while membership is active. Deletion: within 30 days of membership ending or a request for removal.' },
+          { type: 'h3', text: '3.3 Communications (email/support)' },
+          { type: 'p', text: 'Retention: 3 years. Reason: account history, dispute resolution.' },
+          { type: 'h3', text: '3.4 Payment Records (if payments are enabled)' },
+          { type: 'p', text: 'Retention: 7 years. Reason: tax and financial compliance.' },
+          { type: 'h3', text: '3.5 Website Analytics' },
+          { type: 'p', text: 'Retention: 12–24 months (aggregated and anonymised thereafter).' },
+          { type: 'h3', text: '3.6 Backup Data' },
+          { type: 'p', text: 'Backups may contain deleted information until they cycle out. Retention: 30–90 days depending on hosting provider.' },
+          { type: 'h2', text: '4. Deletion Requests' },
+          { type: 'p', text: 'Members may request deletion of:' },
+          { type: 'ul', items: ['Public profiles', 'Non-essential personal data', 'Communications', 'Application documents (unless legally required)'] },
+          { type: 'p', text: 'AIEC may still retain certain data for legal reasons.' },
+          { type: 'h2', text: '5. Exceptions' },
+          { type: 'p', text: 'AIEC may retain information longer if required for:' },
+          { type: 'ul', items: ['Legal compliance', 'Fraud, misuse, or misconduct investigations', 'Certification or governance record-keeping', 'Establishing, exercising, or defending legal claims'] },
+          { type: 'h2', text: '6. Policy Updates' },
+          { type: 'p', text: 'We may update this policy over time.' },
+        ],
+      },
+    };
+  }
+}
+
+</script>
+</body>
+</html>

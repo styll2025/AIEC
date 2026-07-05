@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<dc-import name="LegalPage" title="{{ data.title }}" effective-date="{{ data.effectiveDate }}" blocks="{{ data.blocks }}" hint-size="100%,100%"></dc-import>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      data: {
+        title: 'Privacy Policy',
+        effectiveDate: '14 December 2025',
+        blocks: [
+          { type: 'p', text: 'The AI Ethics Consortium ("AIEC", "we", "our", "us") is a Washington-based non-profit organization dedicated to advancing responsible, transparent, and human-centered artificial intelligence.' },
+          { type: 'p', text: 'This Privacy Policy explains how we collect, use, store, share, and protect personal information when individuals ("Users", "Members", "Experts") use our website and services, including the public expert directory and membership features.' },
+          { type: 'p', text: 'By accessing the AIEC website, becoming a member, or submitting information for a profile, you agree to this Privacy Policy.' },
+          { type: 'h2', text: '2. Information We Collect' },
+          { type: 'h3', text: '2.1 Information You Provide' },
+          { type: 'p', text: 'For Membership & Certification Applications (private):' },
+          { type: 'ul', items: ['Full name', 'Email address', 'Country of residence', 'Professional credentials and uploaded documents', 'Application responses', 'Payment details (if payments become active)', 'Correspondence with AIEC'] },
+          { type: 'p', text: 'For Public Directory Profiles (displayed publicly):' },
+          { type: 'ul', items: ['Full name', 'Email address', 'Profile photo', 'Country / city', 'Professional bio', 'Areas of expertise', 'Certifications', 'Links (website, LinkedIn, booking link)'] },
+          { type: 'p', text: 'You control what optional information to publish except for required fields (name, email, profile photo).' },
+          { type: 'h3', text: '2.2 Automatically Collected Data' },
+          { type: 'ul', items: ['IP address', 'Browser type and device information', 'Usage analytics (e.g., page views, clicks)', 'Cookies and tracking technologies'] },
+          { type: 'h3', text: '2.3 Payment Information (if activated)' },
+          { type: 'p', text: 'Online payments may be processed by trusted third-party vendors (e.g., Stripe). AIEC does not store full payment card details.' },
+          { type: 'h2', text: '3. How We Use Your Information' },
+          { type: 'p', text: 'We use personal data for:' },
+          { type: 'ul', items: ['Managing membership, certification, and renewals', 'Displaying public directory profiles', 'Verifying credentials', 'Communicating with you regarding membership or inquiries', 'Facilitating contact between organisations and listed experts', 'Operating and improving the website', 'Processing payments (if activated)', "Ensuring compliance with AIEC's Code of Ethics & Conduct", 'Security, fraud prevention, and legal compliance'] },
+          { type: 'h2', text: '4. Legal Bases for Processing (GDPR)' },
+          { type: 'p', text: 'For users in the EEA, UK, or other GDPR jurisdictions, we process personal data under the following bases:' },
+          { type: 'ul', items: ['Contract: administering membership and delivering services', 'Consent: publishing your public profile; sending optional communications', 'Legitimate Interest: maintaining a publicly searchable expert directory', 'Legal Obligation: nonprofit bookkeeping, tax compliance, fraud prevention'] },
+          { type: 'p', text: 'Members may withdraw consent for optional uses at any time.' },
+          { type: 'h2', text: '5. Public Directory Disclosure' },
+          { type: 'p', text: 'If you create a public profile, the following information is publicly viewable: name, profile photo, email address, country/city, professional bio and expertise, certifications, and external links.' },
+          { type: 'p', text: 'AIEC is not responsible for communications or interactions between Members and external organisations using email or booking links.' },
+          { type: 'h2', text: '6. How We Share Personal Information' },
+          { type: 'p', text: 'We may share data with trusted third parties to operate AIEC\u2019s services: website hosting providers, email communication tools, analytics providers, and payment processors (if activated). We do not sell personal data. Information is also shared publicly if you choose to create a public expert profile.' },
+          { type: 'h2', text: '7. International Data Transfers' },
+          { type: 'p', text: 'Because AIEC is based in the United States but serves a global community, your data may be transferred internationally. Where required, we apply appropriate safeguards (e.g., SCCs under GDPR).' },
+          { type: 'h2', text: '8. Data Retention' },
+          { type: 'p', text: 'We retain information while membership is active, as long as necessary for nonprofit legal and administrative obligations, for archived governance and certification records, and until you request deletion (unless legal obligations prevent it). Public profiles are removed when membership ends or upon request.' },
+          { type: 'h2', text: '9. Cookies and Tracking' },
+          { type: 'p', text: 'We may use cookies for essential website functionality, analytics and performance, and remembering preferences. Users can control cookies through browser settings. A cookie banner may be displayed where required by law.' },
+          { type: 'h2', text: '10. Your Rights' },
+          { type: 'p', text: 'Depending on your jurisdiction, you may have rights to:' },
+          { type: 'ul', items: ['Access your data', 'Correct inaccurate information', 'Request deletion ("right to be forgotten")', 'Restrict or object to processing', 'Port your data', 'Withdraw consent', 'Lodge a complaint with a data protection authority'] },
+          { type: 'h2', text: '11. Security' },
+          { type: 'p', text: 'We use reasonable safeguards to protect information, including encryption, secure hosting, and access controls. However, no system is fully secure.' },
+          { type: 'h2', text: '13. Changes to This Policy' },
+          { type: 'p', text: 'We may update this Privacy Policy periodically. If changes are material, we will notify members via email or website notice.' },
+          { type: 'h2', text: '14. Contact' },
+          { type: 'p', text: 'For privacy requests or questions, contact AIEC – AI Ethics Consortium, Washington, US.' },
+        ],
+      },
+    };
+  }
+}
+
+</script>
+</body>
+</html>

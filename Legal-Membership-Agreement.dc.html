@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<dc-import name="LegalPage" title="{{ data.title }}" effective-date="{{ data.effectiveDate }}" blocks="{{ data.blocks }}" hint-size="100%,100%"></dc-import>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      data: {
+        title: 'Membership Agreement',
+        effectiveDate: '14 December 2025',
+        blocks: [
+          { type: 'p', text: 'This Membership Agreement ("Agreement") governs your participation as a Member of the AI Ethics Consortium (AIEC).' },
+          { type: 'h2', text: '1. Acceptance of Terms' },
+          { type: 'p', text: 'By submitting a membership application or renewing your membership, you agree to:' },
+          { type: 'ul', items: ['This Membership Agreement', "AIEC's Terms of Service", "AIEC's Privacy Policy", 'The AIEC Code of Conduct'] },
+          { type: 'h2', text: '2. Membership Eligibility' },
+          { type: 'p', text: 'To be eligible, you must:' },
+          { type: 'ul', items: ['Be at least 18 years old', 'Provide accurate and up-to-date information', 'Possess qualifications relevant to the AIEC membership category', "Agree to uphold AIEC's mission of responsible and human-centered AI"] },
+          { type: 'h2', text: '3. Membership Categories' },
+          { type: 'p', text: 'AIEC offers membership exclusively to Certified Professional Members. Within this category, AIEC may introduce different membership tiers. Each tier may provide different rights and benefits, such as access to specific resources, participation in certain programmes, or eligibility for enhanced directory features.' },
+          { type: 'p', text: 'The specific tiers available, their eligibility criteria, and associated benefits are defined on the AIEC website and may evolve over time as AIEC develops its programmes.' },
+          { type: 'h2', text: '4. Member Responsibilities' },
+          { type: 'p', text: 'You agree to:' },
+          { type: 'ul', items: ['Provide truthful and accurate information on your profile', 'Keep your directory details up to date', 'Act professionally when interacting with the public and other members', "Comply with AIEC's Code of Conduct", 'Avoid misrepresentation of certifications, qualifications, or membership status', 'Protect confidentiality where required'] },
+          { type: 'h2', text: '5. Public Directory Profile' },
+          { type: 'p', text: 'If you choose to create a public profile, you agree that:' },
+          { type: 'ul', items: ['Your name, photo, and email will be publicly visible', 'Your profile may appear in search results inside or outside the website', 'You are responsible for any communication with individuals or organisations who contact you', 'AIEC is not responsible for client engagements, contract negotiations, or disputes'] },
+          { type: 'p', text: 'You may request removal of your profile at any time.' },
+          { type: 'h2', text: '6. Fees and Payments' },
+          { type: 'p', text: 'If membership fees apply, they are non-refundable unless otherwise stated. Payment may occur online or via invoice. Membership may be suspended for non-payment.' },
+          { type: 'h2', text: '7. Use of AIEC Badges and Certifications' },
+          { type: 'p', text: "You may display AIEC's certification badges only as permitted by AIEC's Brand Guidelines. Misuse may result in suspension or revocation." },
+          { type: 'h2', text: '8. Disciplinary Action' },
+          { type: 'p', text: 'AIEC may investigate and take action (warnings, suspension, or termination) if you:' },
+          { type: 'ul', items: ['Breach this Agreement', 'Breach the Code of Conduct', 'Misrepresent your qualifications', "Harm AIEC's reputation", 'Engage in unethical, unsafe, or discriminatory behavior'] },
+          { type: 'h2', text: '9. Termination' },
+          { type: 'p', text: 'Membership may end by voluntary cancellation, non-renewal, disciplinary action, or organizational restructuring. Upon termination, public directory access is revoked, use of badges/certifications must cease, and AIEC may retain records for legal or operational reasons.' },
+          { type: 'h2', text: '10. Governing Law' },
+          { type: 'p', text: 'This Agreement is governed by the laws of the State of Washington.' },
+          { type: 'h2', text: '11. Contact' },
+          { type: 'p', text: 'For questions about this Agreement, contact AIEC – AI Ethics Consortium.' },
+        ],
+      },
+    };
+  }
+}
+
+</script>
+</body>
+</html>

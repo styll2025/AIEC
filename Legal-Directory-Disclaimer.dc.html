@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<dc-import name="LegalPage" title="{{ data.title }}" effective-date="{{ data.effectiveDate }}" blocks="{{ data.blocks }}" hint-size="100%,100%"></dc-import>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      data: {
+        title: 'Directory Disclaimer',
+        effectiveDate: '14 December 2025',
+        blocks: [
+          { type: 'p', text: 'AIEC provides a public directory ("Directory") that showcases certified AI professionals and members offering AI ethics expertise.' },
+          { type: 'h2', text: '1. No Endorsement' },
+          { type: 'p', text: 'AIEC does not endorse, guarantee, or certify the accuracy, quality, or suitability of any services provided by listed members.' },
+          { type: 'h2', text: '2. Independent Professionals' },
+          { type: 'p', text: 'Members listed in the Directory operate independently. They are not employees, agents, or representatives of AIEC.' },
+          { type: 'h2', text: '3. No Liability' },
+          { type: 'p', text: 'AIEC is not responsible for:' },
+          { type: 'ul', items: ['Communications between members and users of the directory', 'Advice, consulting, or services provided by members', 'Outcomes of engagements', 'Contractual disputes or negligence claims', 'Errors, omissions, misrepresentations, or outdated information in profiles', 'Any damages arising from use of the Directory'] },
+          { type: 'h2', text: '4. Verification' },
+          { type: 'p', text: 'AIEC may verify member credentials as part of its certification process, but cannot guarantee:' },
+          { type: 'ul', items: ['Completeness of information', 'Continuous accuracy', 'Absence of omissions or misstatements'] },
+          { type: 'h2', text: '5. User Responsibility' },
+          { type: 'p', text: 'Users of the Directory should:' },
+          { type: 'ul', items: ['Conduct their own due diligence', 'Independently vet qualifications', 'Establish clear terms when engaging members', 'Verify legal, regulatory, or licensing requirements in their jurisdiction'] },
+          { type: 'h2', text: '6. Removal or Correction' },
+          { type: 'p', text: 'AIEC may remove or modify profiles that:' },
+          { type: 'ul', items: ["Contain inaccurate or misleading information", "Violate AIEC's Code of Ethics or Terms of Service", 'Are requested for removal by the member'] },
+        ],
+      },
+    };
+  }
+}
+
+</script>
+</body>
+</html>

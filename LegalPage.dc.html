@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style> body { margin: 0; } a { text-decoration: none; } </style>
+</helmet>
+
+<div style="font-family: 'Work Sans', sans-serif; background: #ffffff; color: #14182c; width: 100%; overflow-x: hidden;">
+
+  <div style="position: relative; background: linear-gradient(135deg, #0d1b26 0%, #14182c 55%, #1f1442 100%);">
+    <dc-import name="SiteNav" active="none" dark="{{ true }}" hint-size="100%,90px"></dc-import>
+    <div style="max-width: 900px; margin: 0 auto; padding: 56px 56px 64px;">
+      <p style="color: #a99bf5; font-size: 12.5px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin: 0 0 16px;">Legal</p>
+      <h1 style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 34px; color: #f6f4ee; margin: 0 0 10px;">{{ title }}</h1>
+      <p style="color: #cdd0e0; font-size: 14.5px; margin: 0;">Effective Date: {{ effectiveDate }}</p>
+    </div>
+  </div>
+
+  <div style="background: #ffffff; padding: 72px 56px 96px;">
+    <div style="max-width: 780px; margin: 0 auto;">
+      <sc-for list="{{ blocks }}" as="b" hint-placeholder-count="6">
+        <sc-if value="{{ b.isH2 }}" hint-placeholder-val="{{ false }}">
+          <h2 style="font-family: 'Source Serif 4', serif; font-size: 21px; color: #14182c; margin: 42px 0 16px;">{{ b.text }}</h2>
+        </sc-if>
+        <sc-if value="{{ b.isH3 }}" hint-placeholder-val="{{ false }}">
+          <h3 style="font-size: 15.5px; color: #14182c; font-weight: 700; margin: 26px 0 10px;">{{ b.text }}</h3>
+        </sc-if>
+        <sc-if value="{{ b.isP }}" hint-placeholder-val="{{ true }}">
+          <p style="font-size: 15px; color: #43465a; line-height: 1.75; margin: 0 0 14px;">{{ b.text }}</p>
+        </sc-if>
+        <sc-if value="{{ b.isUl }}" hint-placeholder-val="{{ false }}">
+          <ul style="margin: 0 0 18px; padding-left: 20px;">
+            <sc-for list="{{ b.items }}" as="li" hint-placeholder-count="3">
+              <li style="font-size: 15px; color: #43465a; line-height: 1.75; margin: 0 0 8px;">{{ li }}</li>
+            </sc-for>
+          </ul>
+        </sc-if>
+      </sc-for>
+
+      <div style="margin-top: 56px; padding-top: 32px; border-top: 1px solid rgba(20,24,44,0.1); text-align: center;">
+        <p style="font-size: 13px; color: #7b7e91; margin: 0 0 8px;">© 2026 – The AI Ethics Consortium – All rights reserved</p>
+        <a href="Home.dc.html" style="font-size: 13.5px; color: #6d5ce8; font-weight: 600;">Return to Home</a>
+      </div>
+    </div>
+  </div>
+
+  <dc-import name="SiteFooter" hint-size="100%,340px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const p = this.props;
+    const blocks = (p.blocks || []).map(b => ({
+      isH2: b.type === 'h2', isH3: b.type === 'h3', isP: b.type === 'p', isUl: b.type === 'ul',
+      text: b.text || '', items: b.items || [],
+    }));
+    return {
+      title: p.title, effectiveDate: p.effectiveDate, blocks,
+    };
+  }
+}
+
+</script>
+</body>
+</html>
