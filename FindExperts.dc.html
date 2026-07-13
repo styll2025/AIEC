@@ -9,17 +9,17 @@
 <x-dc>
 <helmet>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style> body { margin: 0; } a { text-decoration: none; } </style>
 </helmet>
 
-<div style="font-family: 'Work Sans', sans-serif; background: #ffffff; color: #14182c; width: 100%; overflow-x: hidden;" data-screen-label="Find Experts">
+<div style="font-family: 'IBM Plex Sans', sans-serif; background: #ffffff; color: #14182c; width: 100%; overflow-x: hidden;" data-screen-label="Find Experts">
 
   <div style="position: relative; background-image: linear-gradient(180deg, rgba(10,13,26,0.55), rgba(10,13,26,0.85)), url('assets/img_office_meeting.png'); background-size: cover; background-position: center;">
     <dc-import name="SiteNav" active="find" dark="{{ true }}" hint-size="100%,90px"></dc-import>
     <div style="max-width: 1180px; margin: 0 auto; padding: 64px 56px 80px;">
-      <p style="color: #a99bf5; font-size: 12.5px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin: 0 0 18px;">The Directory</p>
-      <h1 style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 38px; color: #f6f4ee; margin: 0 0 14px;">AIEC Network of Certified Professionals</h1>
+      <p style="display: inline-block; background: #d7ff4e; color: #14182c; font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; margin: 0 0 22px; padding: 8px 16px; border-radius: 100px;">The Directory</p>
+      <h1 style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 44px; color: #f6f4ee; margin: 0 0 14px; letter-spacing: -1px;">AIEC Network of Certified Professionals</h1>
       <p style="color: #cdd0e0; font-size: 16px; margin: 0; max-width: 620px;">Browse the verified profiles of certified AI professionals, ethicists and auditors from the global AIEC network.</p>
     </div>
   </div>
@@ -27,9 +27,9 @@
   <div style="background: #14182c; padding: 28px 56px;">
     <div style="max-width: 1180px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 16px; align-items: center;">
       <input type="text" placeholder="Search by name, sector or focus..." value="{{ query }}" oninput="{{ onQueryChange }}"
-        style="flex: 1 1 320px; padding: 13px 18px; border-radius: 3px; border: 1px solid rgba(246,244,238,0.2); background: #1c2140; color: #f6f4ee; font-size: 14.5px; font-family: 'Work Sans', sans-serif; outline: none;" />
+        style="flex: 1 1 320px; padding: 13px 18px; border-radius: 3px; border: 1.5px solid rgba(215,255,78,0.45); background: #262c4d; color: #ffffff; font-size: 14.5px; font-family: 'IBM Plex Sans', sans-serif; outline: none;" />
       <select value="{{ region }}" onchange="{{ onRegionChange }}"
-        style="padding: 13px 18px; border-radius: 3px; border: 1px solid rgba(246,244,238,0.2); background: #1c2140; font-size: 14.5px; font-family: 'Work Sans', sans-serif; color: #f6f4ee; min-width: 200px;">
+        style="padding: 13px 18px; border-radius: 3px; border: 1.5px solid rgba(215,255,78,0.45); background: #262c4d; font-size: 14.5px; font-family: 'IBM Plex Sans', sans-serif; color: #ffffff; min-width: 200px;">
         <sc-for list="{{ regions }}" as="r" hint-placeholder-count="7">
           <option value="{{ r }}">{{ r }}</option>
         </sc-for>
@@ -42,20 +42,20 @@
       <p style="color: #7b7e91; font-size: 13.5px; margin: 0 0 28px;">{{ resultsLabel }}</p>
       <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px;">
         <sc-for list="{{ filtered }}" as="p" hint-placeholder-count="8">
-          <div style="border: 1px solid rgba(20,24,44,0.12); border-radius: 4px; padding: 32px 28px; text-align: center; border-top: 3px solid #6d5ce8;">
+          <div style="border: 1px solid rgba(20,24,44,0.12); border-radius: 4px; padding: 32px 28px; text-align: center; border-top: 3px solid #7c3aed; transition: none;">
             <img src="{{ p.photo }}" alt="{{ p.name }}" style="width: 96px; height: 96px; border-radius: 50%; object-fit: cover; margin: 0 auto 18px; display: block;" />
-            <h3 style="font-family: 'Source Serif 4', serif; font-size: 18px; color: #14182c; margin: 0 0 6px;">{{ p.name }}</h3>
-            <p style="font-size: 13px; color: #6d5ce8; margin: 0 0 4px; font-weight: 600;">{{ p.title }}</p>
+            <h3 style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 18px; font-weight: 700; color: #14182c; margin: 0 0 6px;">{{ p.name }}</h3>
+            <p style="font-size: 13px; color: #7c3aed; margin: 0 0 4px; font-weight: 600;">{{ p.title }}</p>
             <p style="font-size: 12.5px; color: #7b7e91; margin: 0 0 16px;">{{ p.credentials }}</p>
             <p style="font-size: 12.5px; color: #43465a; text-align: left; margin: 0 0 8px;"><b>Sectors:</b> {{ p.sectors }}</p>
             <p style="font-size: 12.5px; color: #43465a; text-align: left; margin: 0 0 18px;"><b>Focus:</b> {{ p.focus }}</p>
-            <a href="{{ p.slug }}" style="color: #14182c; font-weight: 600; font-size: 13.5px; border-bottom: 1.5px solid #6d5ce8;">See Profile</a>
+            <a href="{{ p.slug }}" style="color: #14182c; font-weight: 600; font-size: 13.5px; border-bottom: 1.5px solid #7c3aed;">See Profile</a>
           </div>
         </sc-for>
         <div style="background: #14182c; border-radius: 4px; padding: 32px 28px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
-          <h3 style="font-family: 'Source Serif 4', serif; font-size: 19px; color: #f6f4ee; margin: 0 0 14px;">Join the AIEC Membership</h3>
+          <h3 style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 19px; font-weight: 700; color: #f6f4ee; margin: 0 0 14px;">Join the AIEC Membership</h3>
           <p style="font-size: 13.5px; color: #cdd0e0; line-height: 1.7; margin: 0 0 24px;">Join a global network of certified AI experts. Expand your practice, collaborate on meaningful projects, and contribute to shaping the ethical future of artificial intelligence.</p>
-          <a href="JoinAIEC.dc.html" style="background: #6d5ce8; color: #fff; font-weight: 600; font-size: 14px; padding: 12px 26px; border-radius: 3px;">Join the Consortium</a>
+          <a href="JoinAIEC.dc.html" style="background: #d7ff4e; color: #14182c; font-weight: 700; font-size: 14px; padding: 12px 26px; border-radius: 3px;">Join the Consortium</a>
         </div>
       </div>
     </div>
@@ -77,6 +77,7 @@ const PEOPLE = [
   { name: 'Angelo Manassero', title: 'Corporate Philosopher | AI Ethics & Governance Advisor', credentials: 'CAIA, CAIE, CAIP', sectors: 'Consulting / Professional Services, Non-profits / NGOs, Education, Public Sector, Human Resources / Talent & Recruitment', focus: 'AI Ethics & Governance', region: 'Italy', photo: 'assets/head_angelo.png', slug: 'Profile-Angelo-Manassero.dc.html' },
   { name: 'Hande Ocak Basev', title: 'Managing Partner, WSI', credentials: 'CAIE, CAIP, CAIA', sectors: 'Technology, Financial Services, Consulting / Professional Services, Government / Public Sector, Retail, Manufacturing', focus: 'AI Strategy, Governance & Workforce Readiness', region: 'Turkey', photo: 'assets/head_hande.png', slug: 'Profile-Hande-Ocak-Basev.dc.html' },
   { name: 'John McGann', title: 'Global Programme Director, Albany Ltd', credentials: 'CAIP, CAIE, CAIA', sectors: 'Technology, Financial Services, Healthcare, Government / Public Sector, Manufacturing, Retail', focus: 'AI Governance, Risk Assessment & Regulatory Conformity', region: 'UK', photo: 'assets/head_john.png', slug: 'Profile-John-McGann.dc.html' },
+  { name: 'Jordan Henry', title: 'Founder | Chief AI Ethicist, Veritas AI Consulting', credentials: 'CAIE, CAIA, CAIP', sectors: 'Technology, Healthcare, Pharmaceuticals / Life Sciences, Education, Insurance, Government / Public Sector, Non-profits / NGOs', focus: 'AI Ethics, Governance & Compliance in Healthcare', region: 'USA', photo: 'assets/head_jordan.png', slug: 'Profile-Jordan-Henry.dc.html' },
 ];
 
 class Component extends DCLogic {

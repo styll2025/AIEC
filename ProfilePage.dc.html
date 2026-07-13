@@ -9,20 +9,23 @@
 <x-dc>
 <helmet>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style> body { margin: 0; } a { text-decoration: none; } </style>
 </helmet>
 
-<div style="font-family: 'Work Sans', sans-serif; background: #ffffff; color: #14182c; width: 100%; overflow-x: hidden;">
+<div style="font-family: 'IBM Plex Sans', sans-serif; background: #ffffff; color: #14182c; width: 100%; overflow-x: hidden;">
 
   <div style="position: relative; background: linear-gradient(135deg, #0d1b26 0%, #14182c 55%, #0f2b28 100%);">
     <dc-import name="SiteNav" active="find" dark="{{ true }}" hint-size="100%,90px"></dc-import>
     <div style="max-width: 1180px; margin: 0 auto; padding: 16px 56px 64px; display: flex; gap: 32px; align-items: center; flex-wrap: wrap;">
-      <img src="{{ photo }}" alt="{{ name }}" style="width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 3px solid rgba(246,244,238,0.25);" />
+      <div style="position: relative; flex: none;">
+        <div style="position: absolute; top: 8px; left: 8px; width: 140px; height: 140px; background: #d7ff4e; border-radius: 50%; z-index: 0;"></div>
+        <img src="{{ photo }}" alt="{{ name }}" style="position: relative; z-index: 1; width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 3px solid #14182c;" />
+      </div>
       <div>
-        <h1 style="font-family: 'Source Serif 4', serif; font-weight: 500; font-size: 32px; color: #f6f4ee; margin: 0 0 10px;">{{ name }}</h1>
+        <h1 style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 36px; color: #f6f4ee; margin: 0 0 10px; letter-spacing: -0.5px;">{{ name }}</h1>
         <p style="color: #cdd0e0; font-size: 15px; margin: 0 0 4px;">{{ title }}</p>
-        <p style="color: #a99bf5; font-size: 13.5px; font-weight: 600; margin: 0;">{{ credentials }}</p>
+        <p style="color: #d7ff4e; font-size: 13.5px; font-weight: 700; margin: 0;">{{ credentials }}</p>
       </div>
     </div>
   </div>
@@ -41,13 +44,13 @@
 
     <div style="display: flex; flex-wrap: wrap; gap: 56px;">
       <div style="flex: 1 1 400px;">
-        <h2 style="font-family: 'Source Serif 4', serif; font-size: 19px; color: #14182c; margin: 0 0 20px;">Background &amp; Expertise</h2>
+        <h2 style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 20px; font-weight: 700; color: #14182c; margin: 0 0 20px;">Background &amp; Expertise</h2>
         <sc-for list="{{ bgParagraphs }}" as="para" hint-placeholder-count="3">
           <p style="font-size: 14.5px; color: #43465a; line-height: 1.75; margin: 0 0 18px;">{{ para }}</p>
         </sc-for>
       </div>
       <div style="flex: 1 1 400px;">
-        <h2 style="font-family: 'Source Serif 4', serif; font-size: 19px; color: #14182c; margin: 0 0 20px;">{{ supportHeading }}</h2>
+        <h2 style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 20px; font-weight: 700; color: #14182c; margin: 0 0 20px;">{{ supportHeading }}</h2>
         <sc-for list="{{ supportBlocks }}" as="block" hint-placeholder-count="2">
           <p style="font-size: 14.5px; color: #43465a; line-height: 1.75; margin: 0 0 12px;">{{ block.body }}</p>
           <sc-if value="{{ block.hasBullets }}" hint-placeholder-val="{{ false }}">
@@ -62,18 +65,18 @@
     </div>
 
     <div style="margin: 40px 0 56px; padding-top: 40px; border-top: 1px solid rgba(20,24,44,0.1);">
-      <h2 style="font-family: 'Source Serif 4', serif; font-size: 19px; color: #14182c; margin: 0 0 16px;">{{ industriesLabel }}</h2>
+      <h2 style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 20px; font-weight: 700; color: #14182c; margin: 0 0 16px;">{{ industriesLabel }}</h2>
       <p style="font-size: 14.5px; color: #43465a; line-height: 1.75; margin: 0;">{{ industries }}</p>
     </div>
 
     <div style="text-align: center; padding-bottom: 72px;">
       <div style="display: flex; gap: 16px; justify-content: center; margin-bottom: 20px;">
-        <a href="mailto:contact@aiethicsconsortium.org" style="border: 1.5px solid #14182c; color: #14182c; font-weight: 600; font-size: 14.5px; padding: 13px 28px; border-radius: 3px;">Send an Email</a>
+        <a href="mailto:contact@aiethicsconsortium.org" style="border: 1.5px solid #14182c; color: #14182c; font-weight: 700; font-size: 14.5px; padding: 13px 28px; border-radius: 3px;">Send an Email</a>
         <sc-if value="{{ consultation }}" hint-placeholder-val="{{ false }}">
-          <a href="Contact.dc.html" style="background: #6d5ce8; color: #fff; font-weight: 600; font-size: 14.5px; padding: 13px 28px; border-radius: 3px;">Book a Consultation</a>
+          <a href="Contact.dc.html" style="background: #d7ff4e; color: #14182c; font-weight: 700; font-size: 14.5px; padding: 13px 28px; border-radius: 3px;">Book a Consultation</a>
         </sc-if>
       </div>
-      <a href="FindExperts.dc.html" style="color: #6d5ce8; font-weight: 600; font-size: 14px;">Browse More Professionals ›</a>
+      <a href="FindExperts.dc.html" style="color: #7c3aed; font-weight: 700; font-size: 14px;">Browse More Professionals ›</a>
     </div>
   </div>
 

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<dc-import name="ProfilePage"
+  person-name="{{ data.name }}"
+  title="{{ data.title }}"
+  credentials="{{ data.credentials }}"
+  based="{{ data.based }}"
+  company="{{ data.company }}"
+  geo-coverage="{{ data.geoCoverage }}"
+  extra-label="{{ data.extraLabel }}"
+  extra-value="{{ data.extraValue }}"
+  photo="{{ data.photo }}"
+  bg-paragraphs="{{ data.bgParagraphs }}"
+  support-heading="{{ data.supportHeading }}"
+  support-blocks="{{ data.supportBlocks }}"
+  industries-label="{{ data.industriesLabel }}"
+  industries="{{ data.industries }}"
+  consultation="{{ data.consultation }}"
+  hint-size="100%,100%">
+</dc-import>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      data: {
+        name: 'Jordan Henry',
+        title: 'Founder | Chief AI Ethicist',
+        credentials: 'CAIE, CAIA, CAIP',
+        based: 'USA',
+        company: 'Veritas AI Consulting',
+        geoCoverage: 'USA',
+        extraLabel: 'Website',
+        extraValue: 'www.veritasaic.com',
+        photo: 'assets/head_jordan.png',
+        consultation: false,
+        bgParagraphs: [
+          'Jordan W. Henry is a results-oriented leader with a proven track record in healthcare administration, managed care, and emergency management. He excels in driving operational excellence, strategic initiatives, and ethical AI adoption across government, private, and non-profit sectors. His diverse experience spans leading pandemic response operations with the U.S. Department of Health and Human Services (ASPR-NDMS-IMT), managing surge operations for the CDC Foundation during COVID-19, and optimizing multi-million-dollar contracts at Centene Corporation, all while fostering cross-functional collaboration to enhance public health preparedness and patient outcomes.',
+          'As Founder and Chief AI Ethicist of Veritas AI Consulting Firm, Jordan empowers healthcare organizations to integrate AI responsibly, focusing on governance, ethics, regulatory compliance, and risk mitigation. His expertise is bolstered by advanced certifications from institutions like Oxford University, MIT Sloan, and Stanford, enabling him to assess AI implications, promote data-driven decisions, and address ethical challenges in healthcare innovation. Currently, he serves in advisory and board roles for organizations such as the Global Council for Responsible AI, the Institute for AI Governance in Healthcare, and multiple MedTech startups, while leading the Maine Chapter of the Applied AI Association and mentoring the next generation as an Adjunct Professor at the University of Maine. Committed to equitable and impactful progress, Jordan champions responsible AI frameworks to improve global health resilience and foster innovation that benefits society.',
+        ],
+        supportHeading: "How Jordan's Work Supports Organisations",
+        supportBlocks: [
+          { body: 'Jordan provides applied AI ethics, governance, compliance, operational strategy and organizational leadership, helping organizations integrate AI responsibly across regulatory, risk and human impact dimensions.' },
+        ],
+        industriesLabel: 'Industries He Works With',
+        industries: 'Technology, Healthcare, Pharmaceuticals / Life Sciences, Education, Insurance, Consulting / Professional Services, Government / Public Sector, Non-profits / NGOs, Transportation, Logistics / Supply Chain, Agriculture / Agritech, Research & Academia, Cybersecurity.',
+      },
+    };
+  }
+}
+
+</script>
+</body>
+</html>
