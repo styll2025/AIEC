@@ -129,9 +129,12 @@
               </div>
               <div>
                 <label style="font-size: 13px; font-weight: 600; color: #43465a; display: block; margin: 0 0 6px;">Professional Photo *</label>
-                <p style="font-size: 12.5px; color: #7b7e91; line-height: 1.6; margin: 0 0 10px;">Please provide a URL to a clear, recent, high-resolution headshot (head and shoulders) with good lighting and a neutral, uncluttered background. This image will be used in the AIEC member directory and communications.</p>
-                <input type="url" placeholder="https://..." value="{{ photoUrl }}" oninput="{{ onPhotoUrlChange }}"
-                  style="width: 100%; box-sizing: border-box; padding: 12px 14px; border-radius: 3px; border: 1.5px solid {{ photoUrlBorder }}; font-size: 14.5px; font-family: 'IBM Plex Sans', sans-serif;" />
+                <p style="font-size: 12.5px; color: #7b7e91; line-height: 1.6; margin: 0 0 10px;">Please upload a clear, recent, high-resolution headshot (head and shoulders) with good lighting and a neutral, uncluttered background. This image will be used in the AIEC member directory and communications.</p>
+                <input type="file" accept="image/*" onchange="{{ onPhotoChange }}"
+                  style="width: 100%; box-sizing: border-box; padding: 12px 14px; border-radius: 3px; border: 1.5px dashed {{ photoUrlBorder }}; font-size: 13.5px; font-family: 'IBM Plex Sans', sans-serif; background: #fafafa;" />
+                <sc-if value="{{ hasPhotoFile }}" hint-placeholder-val="{{ false }}">
+                  <p style="font-size: 12.5px; color: #43465a; margin: 8px 0 0;">Selected: {{ photoFileName }}</p>
+                </sc-if>
               </div>
             </div>
           </sc-if>
@@ -221,7 +224,7 @@ class Component extends DCLogic {
     touched: {},
     firstName: '', lastName: '', email: '', linkedin: '',
     title: '', company: '', website: '',
-    summary: '', howSupports: '', industries: {}, photoUrl: '',
+    summary: '', howSupports: '', industries: {}, photoUrl: '', photoFileName: '',
     certifications: '', credentialId: '', credentialOrg: '', regions: '', conductAgreed: false,
   };
 
@@ -239,7 +242,7 @@ class Component extends DCLogic {
     }
     if (step === 3) {
       const anyIndustry = Object.values(s.industries).some(v => v);
-      return s.summary.trim() && s.howSupports.trim() && anyIndustry && s.photoUrl.trim();
+      return s.summary.trim() && s.howSupports.trim() && anyIndustry && s.photoUrl;
     }
     if (step === 4) {
       return s.certifications.trim() && s.regions.trim() && s.conductAgreed;
@@ -302,8 +305,38 @@ class Component extends DCLogic {
       industryOptions,
       showIndustriesError: t.step3 && !Object.values(s.industries).some(v => v),
       photoUrl: s.photoUrl,
-      photoUrlBorder: t.step3 && !s.photoUrl.trim() ? errColor : okColor,
-      onPhotoUrlChange: (e) => this.setState({ photoUrl: e.target.value }),
+      photoFileName: s.photoFileName,
+      hasPhotoFile: !!s.photoFileName,
+      photoUrlBorder: t.step3 && !s.photoUrl ? errColor : '#c7c9d3',
+      onPhotoChange: (e) => {
+        const file = e.target.files && e.target.files[0];
+        if (!file) {
+          this.setState({ photoUrl: '', photoFileName: '' });
+          return;
+        }
+        if (!file.type.startsWith('image/')) {
+          alert('Please upload an image file.');
+          e.target.value = '';
+          this.setState({ photoUrl: '', photoFileName: '' });
+          return;
+        }
+        if (file.size > 5 * 1024 * 1024) {
+          alert('Please upload an image smaller than 5 MB.');
+          e.target.value = '';
+          this.setState({ photoUrl: '', photoFileName: '' });
+          return;
+        }
+        const reader = new FileReader();
+        reader.onload = () => {
+          this.setState({ photoUrl: reader.result, photoFileName: file.name });
+        };
+        reader.onerror = () => {
+          alert('Could not read the selected image. Please try another file.');
+          e.target.value = '';
+          this.setState({ photoUrl: '', photoFileName: '' });
+        };
+        reader.readAsDataURL(file);
+      },
 
       certifications: s.certifications, credentialId: s.credentialId, credentialOrg: s.credentialOrg, regions: s.regions,
       certificationsBorder: t.step4 && !s.certifications.trim() ? errColor : okColor,
@@ -348,7 +381,8 @@ class Component extends DCLogic {
           professionalSummary: s.summary.trim(),
           organisationsSupport: s.howSupports.trim(),
           industries,
-          photoUrl: s.photoUrl.trim(),
+          photoUrl: s.photoUrl,
+          photoFileName: s.photoFileName,
           certifications: s.certifications.trim(),
           credentialId: s.credentialId.trim(),
           credentialOrganisation: s.credentialOrg.trim(),
