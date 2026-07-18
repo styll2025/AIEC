@@ -17,14 +17,14 @@
 
   <div style="position: relative; background: linear-gradient(135deg, #0d1b26 0%, #14182c 55%, #1f1442 100%);">
     <dc-import name="SiteNav" active="none" dark="{{ true }}" hint-size="100%,90px"></dc-import>
-    <div style="max-width: 900px; margin: 0 auto; padding: 56px 56px 64px;">
+    <div style="max-width: 900px; margin: 0 auto; padding: clamp(32px, 7vw, 56px) clamp(20px, 5vw, 56px) clamp(40px, 8vw, 64px);">
       <p style="display: inline-block; background: #d7ff4e; color: #14182c; font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; margin: 0 0 18px; padding: 8px 16px; border-radius: 100px;">Legal</p>
-      <h1 style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 40px; color: #f6f4ee; margin: 0 0 10px; letter-spacing: -0.8px;">{{ title }}</h1>
+      <h1 style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: clamp(28px, 5.5vw, 40px); color: #f6f4ee; margin: 0 0 10px; letter-spacing: -0.8px;">{{ title }}</h1>
       <p style="color: #cdd0e0; font-size: 14.5px; margin: 0;">Effective Date: {{ effectiveDate }}</p>
     </div>
   </div>
 
-  <div style="background: #ffffff; padding: 72px 56px 96px;">
+  <div style="background: #ffffff; padding: clamp(40px, 8vw, 72px) clamp(20px, 5vw, 56px) clamp(56px, 9vw, 96px);">
     <div style="max-width: 780px; margin: 0 auto;">
       <sc-for list="{{ blocks }}" as="b" hint-placeholder-count="6">
         <sc-if value="{{ b.isH2 }}" hint-placeholder-val="{{ false }}">

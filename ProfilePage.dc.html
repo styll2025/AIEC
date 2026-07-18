@@ -17,20 +17,20 @@
 
   <div style="position: relative; background: linear-gradient(135deg, #0d1b26 0%, #14182c 55%, #0f2b28 100%);">
     <dc-import name="SiteNav" active="find" dark="{{ true }}" hint-size="100%,90px"></dc-import>
-    <div style="max-width: 1180px; margin: 0 auto; padding: 16px 56px 64px; display: flex; gap: 32px; align-items: center; flex-wrap: wrap;">
+    <div style="max-width: 1180px; margin: 0 auto; padding: 16px clamp(20px, 5vw, 56px) clamp(40px, 8vw, 64px); display: flex; gap: 32px; align-items: center; flex-wrap: wrap;">
       <div style="position: relative; flex: none;">
         <div style="position: absolute; top: 8px; left: 8px; width: 140px; height: 140px; background: #d7ff4e; border-radius: 50%; z-index: 0;"></div>
         <img src="{{ photo }}" alt="{{ name }}" style="position: relative; z-index: 1; width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 3px solid #14182c;" />
       </div>
       <div>
-        <h1 style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 36px; color: #f6f4ee; margin: 0 0 10px; letter-spacing: -0.5px;">{{ name }}</h1>
+        <h1 style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: clamp(26px, 5vw, 36px); color: #f6f4ee; margin: 0 0 10px; letter-spacing: -0.5px;">{{ name }}</h1>
         <p style="color: #cdd0e0; font-size: 15px; margin: 0 0 4px;">{{ title }}</p>
         <p style="color: #d7ff4e; font-size: 13.5px; font-weight: 700; margin: 0;">{{ credentials }}</p>
       </div>
     </div>
   </div>
 
-  <div style="max-width: 1180px; margin: 0 auto; padding: 56px 56px 0;">
+  <div style="max-width: 1180px; margin: 0 auto; padding: clamp(32px, 7vw, 56px) clamp(20px, 5vw, 56px) 0;">
     <div style="display: flex; flex-wrap: wrap; gap: 40px; margin-bottom: 32px;">
       <div style="flex: 1 1 320px; font-size: 14.5px; color: #43465a;"><b style="color: #14182c;">Based:</b> {{ based }}</div>
       <div style="flex: 1 1 320px; font-size: 14.5px; color: #43465a;"><b style="color: #14182c;">Company:</b> {{ company }}</div>
@@ -71,7 +71,7 @@
 
     <div style="text-align: center; padding-bottom: 72px;">
       <div style="display: flex; gap: 16px; justify-content: center; margin-bottom: 20px;">
-        <a href="mailto:contact@aiethicsconsortium.org" style="border: 1.5px solid #14182c; color: #14182c; font-weight: 700; font-size: 14.5px; padding: 13px 28px; border-radius: 3px;">Send an Email</a>
+        <a href="mailto:{{ email }}" style="border: 1.5px solid #14182c; color: #14182c; font-weight: 700; font-size: 14.5px; padding: 13px 28px; border-radius: 3px;">Send an Email</a>
         <sc-if value="{{ consultation }}" hint-placeholder-val="{{ false }}">
           <a href="Contact.dc.html" style="background: #d7ff4e; color: #14182c; font-weight: 700; font-size: 14.5px; padding: 13px 28px; border-radius: 3px;">Book a Consultation</a>
         </sc-if>
@@ -104,6 +104,7 @@ class Component extends DCLogic {
       industriesLabel: p.industriesLabel,
       industries: p.industries,
       consultation: !!p.consultation,
+      email: p.email || 'contact@aiethicsconsortium.org',
     };
   }
 }
