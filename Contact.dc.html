@@ -97,7 +97,7 @@
               </div>
               <div style="display: flex; justify-content: space-between; margin-top: 28px;">
                 <button type="button" onclick="{{ onBack }}" style="background: none; border: 1.5px solid #d4d6de; color: #43465a; font-weight: 600; font-size: 14px; padding: 12px 26px; border-radius: 3px; cursor: pointer; font-family: 'IBM Plex Sans', sans-serif;">Back</button>
-                <button type="button" onclick="{{ onSubmit }}" style="background: #d7ff4e; color: #14182c; font-weight: 700; font-size: 14.5px; padding: 13px 30px; border-radius: 3px; border: none; cursor: pointer; font-family: 'IBM Plex Sans', sans-serif;">Submit</button>
+                <button type="button" onclick="{{ onSubmit }}" disabled="{{ submitting }}" style="background: #d7ff4e; color: #14182c; font-weight: 700; font-size: 14.5px; padding: 13px 30px; border-radius: 3px; border: none; cursor: pointer; font-family: 'IBM Plex Sans', sans-serif; opacity: {{ submitOpacity }};">{{ submitLabel }}</button>
               </div>
             </sc-if>
 
@@ -112,6 +112,8 @@
 
 </x-dc>
 <script type="text/x-dc" data-dc-script>
+const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbzlGVhgr2E4Tiggi0TktBljLVyS5lAvHrvnrzdobd-clrBUXq5kOtEGHb-5-U4D2kAv/exec';
+
 const ENGAGEMENT_TYPES = [
   { letter: 'A', label: 'Project Collaboration' },
   { letter: 'B', label: 'Hire an Expert/Team' },
@@ -121,7 +123,7 @@ const ENGAGEMENT_TYPES = [
 
 class Component extends DCLogic {
   state = {
-    step: 1, submitted: false, touched: {},
+    step: 1, submitted: false, submitting: false, touched: {},
     fullName: '', email: '', org: '',
     engagement: '', summary: '',
   };
@@ -189,11 +191,43 @@ class Component extends DCLogic {
         }
       },
       onBack: () => this.setState({ step: 1 }),
-      onSubmit: () => {
-        if (this.validateStep2()) {
-          this.setState({ submitted: true });
-        } else {
+      submitting: s.submitting,
+      submitLabel: s.submitting ? 'Submitting…' : 'Submit',
+      submitOpacity: s.submitting ? 0.7 : 1,
+      onSubmit: async () => {
+        if (!this.validateStep2()) {
           this.setState({ touched: { ...s.touched, step2: true } });
+          return;
+        }
+
+        this.setState({ submitting: true });
+
+        const payload = {
+          fullName: s.fullName.trim(),
+          workEmail: s.email.trim(),
+          organization: s.org.trim(),
+          engagementType: s.engagement,
+          enquirySummary: s.summary.trim(),
+        };
+
+        try {
+          const response = await fetch(WEB_APP_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+          });
+          const result = await response.json();
+
+          if (result.success) {
+            this.setState({ submitted: true, submitting: false });
+          } else {
+            this.setState({ submitting: false });
+            alert('An error occurred: ' + result.error);
+          }
+        } catch (err) {
+          console.error(err);
+          this.setState({ submitting: false });
+          alert('Sorry, there was a problem submitting your enquiry. Please try again.');
         }
       },
     };

@@ -129,9 +129,9 @@
               </div>
               <div>
                 <label style="font-size: 13px; font-weight: 600; color: #43465a; display: block; margin: 0 0 6px;">Professional Photo *</label>
-                <p style="font-size: 12.5px; color: #7b7e91; line-height: 1.6; margin: 0 0 10px;">Please upload a clear, recent, high-resolution headshot (head and shoulders) with good lighting and a neutral, uncluttered background. This image will be used in the AIEC member directory and communications.</p>
-                <input type="file" accept="image/*" onchange="{{ onPhotoChange }}"
-                  style="width: 100%; box-sizing: border-box; padding: 12px 14px; border-radius: 3px; border: 1.5px dashed #c7c9d3; font-size: 13.5px; font-family: 'IBM Plex Sans', sans-serif; background: #fafafa;" />
+                <p style="font-size: 12.5px; color: #7b7e91; line-height: 1.6; margin: 0 0 10px;">Please provide a URL to a clear, recent, high-resolution headshot (head and shoulders) with good lighting and a neutral, uncluttered background. This image will be used in the AIEC member directory and communications.</p>
+                <input type="url" placeholder="https://..." value="{{ photoUrl }}" oninput="{{ onPhotoUrlChange }}"
+                  style="width: 100%; box-sizing: border-box; padding: 12px 14px; border-radius: 3px; border: 1.5px solid {{ photoUrlBorder }}; font-size: 14.5px; font-family: 'IBM Plex Sans', sans-serif;" />
               </div>
             </div>
           </sc-if>
@@ -188,7 +188,7 @@
               <button type="button" onclick="{{ onNext }}" style="background: #d7ff4e; color: #14182c; font-weight: 700; font-size: 14.5px; padding: 13px 32px; border-radius: 3px; border: none; cursor: pointer; font-family: 'IBM Plex Sans', sans-serif;">Next</button>
             </sc-if>
             <sc-if value="{{ showSubmit }}" hint-placeholder-val="{{ false }}">
-              <button type="button" onclick="{{ onSubmit }}" style="background: #d7ff4e; color: #14182c; font-weight: 700; font-size: 14.5px; padding: 13px 32px; border-radius: 3px; border: none; cursor: pointer; font-family: 'IBM Plex Sans', sans-serif;">Submit</button>
+              <button type="button" onclick="{{ onSubmit }}" disabled="{{ submitting }}" style="background: #d7ff4e; color: #14182c; font-weight: 700; font-size: 14.5px; padding: 13px 32px; border-radius: 3px; border: none; cursor: pointer; font-family: 'IBM Plex Sans', sans-serif; opacity: {{ submitOpacity }};">{{ submitLabel }}</button>
             </sc-if>
           </div>
         </div>
@@ -201,6 +201,8 @@
 
 </x-dc>
 <script type="text/x-dc" data-dc-script>
+const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbwrnY1SXs6ErSt82Thv15ex2Bgm6qH_EzxERDXXgAQL7fp-yCKb1970c2LmzeHArbyV/exec';
+
 const INDUSTRY_LIST = [
   'Technology', 'Healthcare', 'Pharmaceuticals / Life Sciences', 'Education', 'Financial Services',
   'Banking', 'Insurance', 'Consulting / Professional Services', 'Government / Public Sector',
@@ -215,10 +217,11 @@ class Component extends DCLogic {
   state = {
     step: 1,
     submitted: false,
+    submitting: false,
     touched: {},
     firstName: '', lastName: '', email: '', linkedin: '',
     title: '', company: '', website: '',
-    summary: '', howSupports: '', industries: {}, photoName: '',
+    summary: '', howSupports: '', industries: {}, photoUrl: '',
     certifications: '', credentialId: '', credentialOrg: '', regions: '', conductAgreed: false,
   };
 
@@ -236,7 +239,7 @@ class Component extends DCLogic {
     }
     if (step === 3) {
       const anyIndustry = Object.values(s.industries).some(v => v);
-      return s.summary.trim() && s.howSupports.trim() && anyIndustry;
+      return s.summary.trim() && s.howSupports.trim() && anyIndustry && s.photoUrl.trim();
     }
     if (step === 4) {
       return s.certifications.trim() && s.regions.trim() && s.conductAgreed;
@@ -298,7 +301,9 @@ class Component extends DCLogic {
       onHowSupportsChange: (e) => this.setState({ howSupports: e.target.value }),
       industryOptions,
       showIndustriesError: t.step3 && !Object.values(s.industries).some(v => v),
-      onPhotoChange: (e) => this.setState({ photoName: (e.target.files && e.target.files[0]) ? e.target.files[0].name : '' }),
+      photoUrl: s.photoUrl,
+      photoUrlBorder: t.step3 && !s.photoUrl.trim() ? errColor : okColor,
+      onPhotoUrlChange: (e) => this.setState({ photoUrl: e.target.value }),
 
       certifications: s.certifications, credentialId: s.credentialId, credentialOrg: s.credentialOrg, regions: s.regions,
       certificationsBorder: t.step4 && !s.certifications.trim() ? errColor : okColor,
@@ -320,11 +325,55 @@ class Component extends DCLogic {
         }
       },
       onBack: () => this.setState({ step: s.step - 1 }),
-      onSubmit: () => {
-        if (this.validateStep(4)) {
-          this.setState({ submitted: true });
-        } else {
+      submitting: s.submitting,
+      submitLabel: s.submitting ? 'Submitting…' : 'Submit Application',
+      submitOpacity: s.submitting ? 0.7 : 1,
+      onSubmit: async () => {
+        if (!this.validateStep(4)) {
           this.setState({ touched: { ...s.touched, step4: true } });
+          return;
+        }
+
+        this.setState({ submitting: true });
+
+        const industries = INDUSTRY_LIST.filter(name => s.industries[name]);
+        const payload = {
+          firstName: s.firstName.trim(),
+          lastName: s.lastName.trim(),
+          email: s.email.trim(),
+          linkedinProfile: s.linkedin.trim(),
+          professionalTitle: s.title.trim(),
+          company: s.company.trim(),
+          website: s.website.trim(),
+          professionalSummary: s.summary.trim(),
+          organisationsSupport: s.howSupports.trim(),
+          industries,
+          photoUrl: s.photoUrl.trim(),
+          certifications: s.certifications.trim(),
+          credentialId: s.credentialId.trim(),
+          credentialOrganisation: s.credentialOrg.trim(),
+          regions: s.regions.trim(),
+          codeOfConductAccepted: s.conductAgreed,
+        };
+
+        try {
+          const response = await fetch(WEB_APP_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+          });
+          const result = await response.json();
+
+          if (result.success) {
+            this.setState({ submitted: true, submitting: false });
+          } else {
+            this.setState({ submitting: false });
+            alert(result.error || 'Submission failed.');
+          }
+        } catch (err) {
+          console.error(err);
+          this.setState({ submitting: false });
+          alert('Submission failed.');
         }
       },
     };
