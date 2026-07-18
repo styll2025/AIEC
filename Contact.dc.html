@@ -211,19 +211,13 @@ class Component extends DCLogic {
         };
 
         try {
-          const response = await fetch(WEB_APP_URL, {
+          await fetch(WEB_APP_URL, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
             body: JSON.stringify(payload),
           });
-          const result = await response.json();
-
-          if (result.success) {
-            this.setState({ submitted: true, submitting: false });
-          } else {
-            this.setState({ submitting: false });
-            alert('An error occurred: ' + result.error);
-          }
+          this.setState({ submitted: true, submitting: false });
         } catch (err) {
           console.error(err);
           this.setState({ submitting: false });
