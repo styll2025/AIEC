@@ -37,7 +37,6 @@
     </div>
     <div style="display: flex; flex-wrap: wrap; gap: 40px; margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(20,24,44,0.1);">
       <div style="flex: 1 1 320px; font-size: 14.5px; color: #43465a;"><b style="color: #14182c;">Geographic Coverage:</b> {{ geoCoverage }}</div>
-      <div style="flex: 1 1 320px; font-size: 14.5px; color: #43465a;"><b style="color: #14182c;">Email:</b> <a href="mailto:{{ email }}" style="color: #7c3aed; border-bottom: 1.5px solid #7c3aed;">{{ email }}</a></div>
       <sc-if value="{{ hasExtraContact }}" hint-placeholder-val="{{ false }}">
         <div style="flex: 1 1 320px; font-size: 14.5px; color: #43465a;"><b style="color: #14182c;">{{ extraLabel }}:</b> {{ extraValue }}</div>
       </sc-if>
