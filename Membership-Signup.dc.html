@@ -224,12 +224,44 @@ class Component extends DCLogic {
     touched: {},
     firstName: '', lastName: '', email: '', linkedin: '',
     title: '', company: '', website: '',
-    summary: '', howSupports: '', industries: {}, photoUrl: '', photoFileName: '',
+    summary: '', howSupports: '', industries: {}, photoFile: null, photoFileName: '',
     certifications: '', credentialId: '', credentialOrg: '', regions: '', conductAgreed: false,
   };
 
   isValidEmail(e) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
+  }
+
+  readFileAsDataURL(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  }
+
+  buildPayload(state, photoUrl) {
+    const industries = INDUSTRY_LIST.filter(name => state.industries[name]);
+    return {
+      firstName: state.firstName.trim(),
+      lastName: state.lastName.trim(),
+      email: state.email.trim(),
+      linkedinProfile: state.linkedin.trim(),
+      professionalTitle: state.title.trim(),
+      company: state.company.trim(),
+      website: state.website.trim(),
+      professionalSummary: state.summary.trim(),
+      organisationsSupport: state.howSupports.trim(),
+      industries,
+      photoUrl,
+      photoFileName: state.photoFileName,
+      certifications: state.certifications.trim(),
+      credentialId: state.credentialId.trim(),
+      credentialOrganisation: state.credentialOrg.trim(),
+      regions: state.regions.trim(),
+      codeOfConductAccepted: state.conductAgreed,
+    };
   }
 
   validateStep(step) {
@@ -242,7 +274,7 @@ class Component extends DCLogic {
     }
     if (step === 3) {
       const anyIndustry = Object.values(s.industries).some(v => v);
-      return s.summary.trim() && s.howSupports.trim() && anyIndustry && s.photoUrl;
+      return s.summary.trim() && s.howSupports.trim() && anyIndustry && s.photoFile;
     }
     if (step === 4) {
       return s.certifications.trim() && s.regions.trim() && s.conductAgreed;
@@ -304,38 +336,28 @@ class Component extends DCLogic {
       onHowSupportsChange: (e) => this.setState({ howSupports: e.target.value }),
       industryOptions,
       showIndustriesError: t.step3 && !Object.values(s.industries).some(v => v),
-      photoUrl: s.photoUrl,
       photoFileName: s.photoFileName,
-      hasPhotoFile: !!s.photoFileName,
-      photoUrlBorder: t.step3 && !s.photoUrl ? errColor : '#c7c9d3',
+      hasPhotoFile: !!s.photoFile,
+      photoUrlBorder: t.step3 && !s.photoFile ? errColor : '#c7c9d3',
       onPhotoChange: (e) => {
         const file = e.target.files && e.target.files[0];
         if (!file) {
-          this.setState({ photoUrl: '', photoFileName: '' });
+          this.setState({ photoFile: null, photoFileName: '' });
           return;
         }
         if (!file.type.startsWith('image/')) {
           alert('Please upload an image file.');
           e.target.value = '';
-          this.setState({ photoUrl: '', photoFileName: '' });
+          this.setState({ photoFile: null, photoFileName: '' });
           return;
         }
         if (file.size > 5 * 1024 * 1024) {
           alert('Please upload an image smaller than 5 MB.');
           e.target.value = '';
-          this.setState({ photoUrl: '', photoFileName: '' });
+          this.setState({ photoFile: null, photoFileName: '' });
           return;
         }
-        const reader = new FileReader();
-        reader.onload = () => {
-          this.setState({ photoUrl: reader.result, photoFileName: file.name });
-        };
-        reader.onerror = () => {
-          alert('Could not read the selected image. Please try another file.');
-          e.target.value = '';
-          this.setState({ photoUrl: '', photoFileName: '' });
-        };
-        reader.readAsDataURL(file);
+        this.setState({ photoFile: file, photoFileName: file.name });
       },
 
       certifications: s.certifications, credentialId: s.credentialId, credentialOrg: s.credentialOrg, regions: s.regions,
@@ -362,35 +384,20 @@ class Component extends DCLogic {
       submitLabel: s.submitting ? 'Submitting…' : 'Submit Application',
       submitOpacity: s.submitting ? 0.7 : 1,
       onSubmit: async () => {
+        const state = this.state;
         if (!this.validateStep(4)) {
-          this.setState({ touched: { ...s.touched, step4: true } });
+          this.setState({ touched: { ...state.touched, step4: true } });
           return;
         }
 
         this.setState({ submitting: true });
 
-        const industries = INDUSTRY_LIST.filter(name => s.industries[name]);
-        const payload = {
-          firstName: s.firstName.trim(),
-          lastName: s.lastName.trim(),
-          email: s.email.trim(),
-          linkedinProfile: s.linkedin.trim(),
-          professionalTitle: s.title.trim(),
-          company: s.company.trim(),
-          website: s.website.trim(),
-          professionalSummary: s.summary.trim(),
-          organisationsSupport: s.howSupports.trim(),
-          industries,
-          photoUrl: s.photoUrl,
-          photoFileName: s.photoFileName,
-          certifications: s.certifications.trim(),
-          credentialId: s.credentialId.trim(),
-          credentialOrganisation: s.credentialOrg.trim(),
-          regions: s.regions.trim(),
-          codeOfConductAccepted: s.conductAgreed,
-        };
-
         try {
+          const photoUrl = state.photoFile
+            ? await this.readFileAsDataURL(state.photoFile)
+            : '';
+          const payload = this.buildPayload(state, photoUrl);
+
           await fetch(WEB_APP_URL, {
             method: 'POST',
             mode: 'no-cors',
