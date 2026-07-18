@@ -112,7 +112,7 @@
 
 </x-dc>
 <script type="text/x-dc" data-dc-script>
-const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbziZNTHLF889sqstrlw89S3JrC4xKy6h2YetazDE29CXKRhEG1DWBz7ya-lMlV3CA28/exec';
+const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbzlGVhgr2E4Tiggi0TktBljLVyS5lAvHrvnrzdobd-clrBUXq5kOtEGHb-5-U4D2kAv/exec';
 
 const ENGAGEMENT_TYPES = [
   { letter: 'A', label: 'Project Collaboration' },
@@ -206,8 +206,8 @@ class Component extends DCLogic {
           fullName: s.fullName.trim(),
           workEmail: s.email.trim(),
           organization: s.org.trim(),
-          engagement: s.engagement,
-          summary: s.summary.trim(),
+          engagementType: s.engagement,
+          enquirySummary: s.summary.trim(),
         };
 
         try {
@@ -222,12 +222,12 @@ class Component extends DCLogic {
             this.setState({ submitted: true, submitting: false });
           } else {
             this.setState({ submitting: false });
-            alert('Error: ' + result.error);
+            alert('An error occurred: ' + result.error);
           }
         } catch (err) {
           console.error(err);
           this.setState({ submitting: false });
-          alert('Submission failed.');
+          alert('Sorry, there was a problem submitting your enquiry. Please try again.');
         }
       },
     };
