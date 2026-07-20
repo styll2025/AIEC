@@ -7,7 +7,7 @@
 </head>
 <body>
 <x-dc>
-<dc-import name="LegalPage" title="{{ data.title }}" effective-date="{{ data.effectiveDate }}" blocks="{{ data.blocks }}" hint-size="100%,100%"></dc-import>
+<dc-import name="LegalPage" title="{{ data.title }}" effective-date="{{ data.effectiveDate }}" blocks="{{ data.blocks }}" canonical-path="{{ data.canonicalPath }}" meta-description="{{ data.metaDescription }}" hint-size="100%,100%"></dc-import>
 
 </x-dc>
 <script type="text/x-dc" data-dc-script>
@@ -15,6 +15,8 @@ class Component extends DCLogic {
   renderVals() {
     return {
       data: {
+        canonicalPath: '/legal/membership-agreement',
+        metaDescription: 'Membership Agreement outlining rights, responsibilities, and terms for AIEC certified professional members.',
         title: 'Membership Agreement',
         effectiveDate: '14 December 2025',
         blocks: [

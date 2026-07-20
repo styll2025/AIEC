@@ -22,6 +22,8 @@
   industries="{{ data.industries }}"
   consultation="{{ data.consultation }}"
   email="{{ data.email }}"
+  canonical-path="{{ data.canonicalPath }}"
+  meta-description="{{ data.metaDescription }}"
   hint-size="100%,100%">
 </dc-import>
 
@@ -39,6 +41,8 @@ class Component extends DCLogic {
         geoCoverage: 'AUS, UK, US, EU',
         photo: 'assets/head_jess.png',
         consultation: false,
+        canonicalPath: '/experts/jess-sharkie',
+        metaDescription: 'Jess Sharkie — AIEC co-founder specialising in community development, human rights, AI governance and ethics.',
         email: 'brightlineai.au@gmail.com',
         bgParagraphs: [
           'Jess is a public sector leader and AI governance practitioner with Oxford Saïd certifications and oxethica professional designations spanning AI, AI Ethics, AI Auditing and digital transformation in government. She is currently completing a Graduate Diploma in AI at La Trobe University.',

@@ -8,6 +8,14 @@
 <body>
 <x-dc>
 <helmet>
+  <title>{{ seoTitle }}</title>
+  <meta name="description" content="{{ metaDescription }}" />
+  <link rel="canonical" href="{{ canonicalUrl }}" />
+  <meta property="og:title" content="{{ seoTitle }}" />
+  <meta property="og:description" content="{{ metaDescription }}" />
+  <meta property="og:url" content="{{ canonicalUrl }}" />
+  <meta property="og:type" content="profile" />
+  <meta property="og:site_name" content="AI Ethics Consortium" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style> body { margin: 0; } a { text-decoration: none; } </style>
@@ -73,10 +81,10 @@
       <div style="display: flex; gap: 16px; justify-content: center; margin-bottom: 20px;">
         <a href="mailto:{{ email }}" style="border: 1.5px solid #14182c; color: #14182c; font-weight: 700; font-size: 14.5px; padding: 13px 28px; border-radius: 3px;">Send an Email</a>
         <sc-if value="{{ consultation }}" hint-placeholder-val="{{ false }}">
-          <a href="Contact.dc.html" style="background: #d7ff4e; color: #14182c; font-weight: 700; font-size: 14.5px; padding: 13px 28px; border-radius: 3px;">Book a Consultation</a>
+          <a href="/contact" style="background: #d7ff4e; color: #14182c; font-weight: 700; font-size: 14.5px; padding: 13px 28px; border-radius: 3px;">Book a Consultation</a>
         </sc-if>
       </div>
-      <a href="FindExperts.dc.html" style="color: #7c3aed; font-weight: 700; font-size: 14px;">Browse More Professionals ›</a>
+      <a href="/find-experts" style="color: #7c3aed; font-weight: 700; font-size: 14px;">Browse More Professionals ›</a>
     </div>
   </div>
 
@@ -88,6 +96,8 @@
 class Component extends DCLogic {
   renderVals() {
     const p = this.props;
+    const origin = 'https://aiec.pages.dev';
+    const canonicalPath = p.canonicalPath || '';
     return {
       name: p.personName, title: p.title, credentials: p.credentials,
       based: p.based, company: p.company, geoCoverage: p.geoCoverage,
@@ -105,6 +115,9 @@ class Component extends DCLogic {
       industries: p.industries,
       consultation: !!p.consultation,
       email: p.email || 'contact@aiethicsconsortium.org',
+      seoTitle: (p.personName || 'Expert') + ' | AI Ethics Consortium',
+      metaDescription: p.metaDescription || ('Certified AI ethics professional profile for ' + (p.personName || 'this expert') + ' in the AIEC expert directory.'),
+      canonicalUrl: canonicalPath ? origin + canonicalPath : origin + '/find-experts',
     };
   }
 }

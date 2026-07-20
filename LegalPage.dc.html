@@ -8,6 +8,14 @@
 <body>
 <x-dc>
 <helmet>
+  <title>{{ seoTitle }}</title>
+  <meta name="description" content="{{ metaDescription }}" />
+  <link rel="canonical" href="{{ canonicalUrl }}" />
+  <meta property="og:title" content="{{ seoTitle }}" />
+  <meta property="og:description" content="{{ metaDescription }}" />
+  <meta property="og:url" content="{{ canonicalUrl }}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="AI Ethics Consortium" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style> body { margin: 0; } a { text-decoration: none; } </style>
@@ -47,7 +55,7 @@
 
       <div style="margin-top: 56px; padding-top: 32px; border-top: 1px solid rgba(20,24,44,0.1); text-align: center;">
         <p style="font-size: 13px; color: #7b7e91; margin: 0 0 8px;">© 2026 – The AI Ethics Consortium – All rights reserved</p>
-        <a href="index.html" style="font-size: 13.5px; color: #7c3aed; font-weight: 700;">Return to Home</a>
+        <a href="/" style="font-size: 13.5px; color: #7c3aed; font-weight: 700;">Return to Home</a>
       </div>
     </div>
   </div>
@@ -64,8 +72,13 @@ class Component extends DCLogic {
       isH2: b.type === 'h2', isH3: b.type === 'h3', isP: b.type === 'p', isUl: b.type === 'ul',
       text: b.text || '', items: b.items || [],
     }));
+    const origin = 'https://aiec.pages.dev';
+    const canonicalPath = p.canonicalPath || '';
     return {
       title: p.title, effectiveDate: p.effectiveDate, blocks,
+      seoTitle: p.title + ' | AI Ethics Consortium',
+      metaDescription: p.metaDescription || (p.title + ' for the AI Ethics Consortium (AIEC).'),
+      canonicalUrl: canonicalPath ? origin + canonicalPath : origin + '/',
     };
   }
 }

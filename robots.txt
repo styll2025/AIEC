@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# Block implementation files and internal components from indexing
+Disallow: /ProfilePage.dc
+Disallow: /LegalPage.dc
+Disallow: /SiteNav.dc
+Disallow: /SiteFooter.dc
+Disallow: /*.dc.html$
+
+Sitemap: https://aiec.pages.dev/sitemap.xml

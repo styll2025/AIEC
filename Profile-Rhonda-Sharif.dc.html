@@ -22,6 +22,8 @@
   industries="{{ data.industries }}"
   consultation="{{ data.consultation }}"
   email="{{ data.email }}"
+  canonical-path="{{ data.canonicalPath }}"
+  meta-description="{{ data.metaDescription }}"
   hint-size="100%,100%">
 </dc-import>
 
@@ -39,6 +41,8 @@ class Component extends DCLogic {
         geoCoverage: 'US, EU, UK',
         photo: 'assets/head_rhonda.png',
         consultation: false,
+        canonicalPath: '/experts/rhonda-sharif',
+        metaDescription: 'Rhonda Sharif — AI governance specialist and solutions architect serving technology, healthcare, and professional services sectors.',
         email: 'rhonda.sharif@gmail.com',
         bgParagraphs: [
           "As a Certified AI Professional (CAIP), Certified AI Auditor (CAIA), and Certified AI Ethicist (CAIE) with training from Oxford Saïd Business School's AI Programme and an MBA, I specialize in AI governance and solutions architecture.",

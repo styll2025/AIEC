@@ -7,7 +7,7 @@
 </head>
 <body>
 <x-dc>
-<dc-import name="LegalPage" title="{{ data.title }}" effective-date="{{ data.effectiveDate }}" blocks="{{ data.blocks }}" hint-size="100%,100%"></dc-import>
+<dc-import name="LegalPage" title="{{ data.title }}" effective-date="{{ data.effectiveDate }}" blocks="{{ data.blocks }}" canonical-path="{{ data.canonicalPath }}" meta-description="{{ data.metaDescription }}" hint-size="100%,100%"></dc-import>
 
 </x-dc>
 <script type="text/x-dc" data-dc-script>
@@ -15,6 +15,8 @@ class Component extends DCLogic {
   renderVals() {
     return {
       data: {
+        canonicalPath: '/legal/directory-disclaimer',
+        metaDescription: 'Directory Disclaimer clarifying the scope and limitations of the AIEC public expert directory.',
         title: 'Directory Disclaimer',
         effectiveDate: '14 December 2025',
         blocks: [

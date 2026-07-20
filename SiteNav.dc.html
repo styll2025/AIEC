@@ -8,14 +8,14 @@
 <body>
 <x-dc>
 <div style="display: flex; align-items: center; justify-content: space-between; padding: 22px clamp(20px, 5vw, 56px); position: relative; z-index: 20; font-family: 'IBM Plex Sans', sans-serif; border-bottom: 1px solid {{ borderColor }};">
-  <a href="index.html" style="display: flex; align-items: center; gap: 10px; flex: none;">
+  <a href="/" style="display: flex; align-items: center; gap: 10px; flex: none;">
     <img src="{{ logoSrc }}" alt="AI Ethics Consortium" style="height: 37px;" />
   </a>
   <div class="aiec-nav-desktop" style="display: flex; gap: 40px; align-items: center;">
-    <a href="index.html" style="color: {{ textColor }}; font-size: 14px; font-weight: {{ homeWeight }}; letter-spacing: 0.3px;">Home</a>
-    <a href="FindExperts.dc.html" style="color: {{ textColor }}; font-size: 14px; font-weight: {{ findWeight }}; letter-spacing: 0.3px;">Find Experts</a>
-    <a href="JoinAIEC.dc.html" style="color: {{ textColor }}; font-size: 14px; font-weight: {{ joinWeight }}; letter-spacing: 0.3px;">Join AIEC</a>
-    <a href="Contact.dc.html" style="color: {{ textColor }}; font-size: 14px; font-weight: {{ contactWeight }}; letter-spacing: 0.3px;">Contact</a>
+    <a href="/" style="color: {{ textColor }}; font-size: 14px; font-weight: {{ homeWeight }}; letter-spacing: 0.3px;">Home</a>
+    <a href="/find-experts" style="color: {{ textColor }}; font-size: 14px; font-weight: {{ findWeight }}; letter-spacing: 0.3px;">Find Experts</a>
+    <a href="/join-aiec" style="color: {{ textColor }}; font-size: 14px; font-weight: {{ joinWeight }}; letter-spacing: 0.3px;">Join AIEC</a>
+    <a href="/contact" style="color: {{ textColor }}; font-size: 14px; font-weight: {{ contactWeight }}; letter-spacing: 0.3px;">Contact</a>
   </div>
   <button type="button" class="aiec-nav-toggle" onclick="{{ toggleMenu }}" aria-label="Toggle menu" style="display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; width: 44px; height: 44px; align-items: center; justify-content: center;">
     <span style="width: 22px; height: 2px; background: {{ textColor }}; display: block; transition: transform 0.2s ease;"></span>
@@ -25,10 +25,10 @@
 </div>
 <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
   <div style="display: flex; flex-direction: column; gap: 4px; padding: 8px clamp(20px, 5vw, 56px) 20px; background: {{ menuBg }}; position: relative; z-index: 19; border-bottom: 1px solid {{ borderColor }};">
-    <a href="index.html" style="color: {{ textColor }}; font-size: 16px; font-weight: {{ homeWeight }}; padding: 12px 0;">Home</a>
-    <a href="FindExperts.dc.html" style="color: {{ textColor }}; font-size: 16px; font-weight: {{ findWeight }}; padding: 12px 0;">Find Experts</a>
-    <a href="JoinAIEC.dc.html" style="color: {{ textColor }}; font-size: 16px; font-weight: {{ joinWeight }}; padding: 12px 0;">Join AIEC</a>
-    <a href="Contact.dc.html" style="color: {{ textColor }}; font-size: 16px; font-weight: {{ contactWeight }}; padding: 12px 0;">Contact</a>
+    <a href="/" style="color: {{ textColor }}; font-size: 16px; font-weight: {{ homeWeight }}; padding: 12px 0;">Home</a>
+    <a href="/find-experts" style="color: {{ textColor }}; font-size: 16px; font-weight: {{ findWeight }}; padding: 12px 0;">Find Experts</a>
+    <a href="/join-aiec" style="color: {{ textColor }}; font-size: 16px; font-weight: {{ joinWeight }}; padding: 12px 0;">Join AIEC</a>
+    <a href="/contact" style="color: {{ textColor }}; font-size: 16px; font-weight: {{ contactWeight }}; padding: 12px 0;">Contact</a>
   </div>
 </sc-if>
 <helmet>

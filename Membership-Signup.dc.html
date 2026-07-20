@@ -8,6 +8,14 @@
 <body>
 <x-dc>
 <helmet>
+  <title>Membership Registration | AI Ethics Consortium</title>
+  <meta name="description" content="Apply for AIEC membership. Submit your certification details and join the global directory of certified AI ethics professionals." />
+  <link rel="canonical" href="https://aiec.pages.dev/membership" />
+  <meta property="og:title" content="Membership Registration | AI Ethics Consortium" />
+  <meta property="og:description" content="Apply for AIEC membership. Submit your certification details and join the global directory of certified AI ethics professionals." />
+  <meta property="og:url" content="https://aiec.pages.dev/membership" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="AI Ethics Consortium" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style> body { margin: 0; } a { text-decoration: none; } </style>
@@ -31,7 +39,7 @@
         <div style="border: 1px solid rgba(20,24,44,0.12); border-radius: 4px; padding: 48px 40px; text-align: center; border-top: 3px solid #7c3aed;">
           <h3 style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 22px; font-weight: 700; color: #14182c; margin: 0 0 16px;">Application received</h3>
           <p style="font-size: 14.5px; color: #43465a; line-height: 1.7; margin: 0 0 24px;">Thank you for applying to the AIEC membership. We'll verify your certification and follow up by email with your profile and next steps.</p>
-          <a href="index.html" style="color: #14182c; font-weight: 600; font-size: 14px; border-bottom: 1.5px solid #7c3aed;">Return to Home</a>
+          <a href="/" style="color: #14182c; font-weight: 600; font-size: 14px; border-bottom: 1.5px solid #7c3aed;">Return to Home</a>
         </div>
       </sc-if>
 
@@ -167,10 +175,10 @@
                   style="width: 100%; box-sizing: border-box; padding: 12px 14px; border-radius: 3px; border: 1.5px solid {{ regionsBorder }}; font-size: 14.5px; font-family: 'IBM Plex Sans', sans-serif;" />
               </div>
               <div style="border-top: 1px solid rgba(20,24,44,0.1); padding-top: 20px; margin-top: 6px;">
-                <p style="font-size: 13px; font-weight: 600; color: #43465a; margin: 0 0 10px;">Please read the <a href="Legal-Code-of-Conduct.dc" target="_blank" rel="noopener noreferrer" style="color: #7c3aed; border-bottom: 1.5px solid #7c3aed;">AIEC Code of Conduct</a> before submitting your application. *</p>
+                <p style="font-size: 13px; font-weight: 600; color: #43465a; margin: 0 0 10px;">Please read the <a href="/legal/code-of-conduct" target="_blank" rel="noopener noreferrer" style="color: #7c3aed; border-bottom: 1.5px solid #7c3aed;">AIEC Code of Conduct</a> before submitting your application. *</p>
                 <label style="display: flex; align-items: flex-start; gap: 10px; font-size: 13.5px; color: #43465a; cursor: pointer;">
                   <input type="checkbox" checked="{{ conductAgreed }}" onchange="{{ onConductToggle }}" style="width: 16px; height: 16px; margin-top: 2px; accent-color: #7c3aed; flex: none;" />
-                  <span>I confirm that I have read, understood, and agree to follow the <a href="Legal-Code-of-Conduct.dc" target="_blank" rel="noopener noreferrer" style="color: #7c3aed; font-weight: 600; border-bottom: 1.5px solid #7c3aed;">AIEC Code of Conduct</a>.</span>
+                  <span>I confirm that I have read, understood, and agree to follow the <a href="/legal/code-of-conduct" target="_blank" rel="noopener noreferrer" style="color: #7c3aed; font-weight: 600; border-bottom: 1.5px solid #7c3aed;">AIEC Code of Conduct</a>.</span>
                 </label>
                 <sc-if value="{{ showConductError }}" hint-placeholder-val="{{ false }}">
                   <p style="color: #c0392b; font-size: 12.5px; margin: 8px 0 0;">Please confirm you agree to the Code of Conduct.</p>

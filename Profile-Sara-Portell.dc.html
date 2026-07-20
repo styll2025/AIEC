@@ -24,6 +24,8 @@
   industries="{{ data.industries }}"
   consultation="{{ data.consultation }}"
   email="{{ data.email }}"
+  canonical-path="{{ data.canonicalPath }}"
+  meta-description="{{ data.metaDescription }}"
   hint-size="100%,100%">
 </dc-import>
 
@@ -43,6 +45,8 @@ class Component extends DCLogic {
         extraValue: 'hcrai.com',
         photo: 'assets/head_sara.png',
         consultation: false,
+        canonicalPath: '/experts/sara-portell',
+        metaDescription: 'Sara Portell — AIEC co-founder, behavioural scientist and AI governance expert specialising in human-centred AI and ISO/IEC 42001 auditing.',
         email: 'saraportell@hcrai.com',
         bgParagraphs: [
           "Sara is an applied behavioural scientist specialising in AI governance, ethics and human-centred AI. She has over 17 years of experience working across behavioural research, product, innovation, UX and AI in global technology organisations, including Shopify, Expedia, F-Secure, Unit4, and start-ups in Health, Wellbeing, Education, Travel, Research and HRTech.",

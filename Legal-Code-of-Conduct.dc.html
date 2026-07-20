@@ -19,7 +19,7 @@
 </head>
 <body>
 <x-dc>
-<dc-import name="LegalPage" title="{{ data.title }}" effective-date="{{ data.effectiveDate }}" blocks="{{ data.blocks }}" hint-size="100%,100%"></dc-import>
+<dc-import name="LegalPage" title="{{ data.title }}" effective-date="{{ data.effectiveDate }}" blocks="{{ data.blocks }}" canonical-path="{{ data.canonicalPath }}" meta-description="{{ data.metaDescription }}" hint-size="100%,100%"></dc-import>
 
 </x-dc>
 <script type="text/x-dc" data-dc-script>
@@ -27,6 +27,8 @@ class Component extends DCLogic {
   renderVals() {
     return {
       data: {
+        canonicalPath: '/legal/code-of-conduct',
+        metaDescription: 'AIEC Code of Conduct setting ethical expectations for members, collaborators, and community participants.',
         title: 'Code of Conduct',
         effectiveDate: '14 December 2025',
         blocks: [
