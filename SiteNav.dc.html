@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
+<script src="/support.js"></script>
 </head>
 <body>
 <x-dc>
@@ -51,7 +51,7 @@ class Component extends DCLogic {
     return {
       homeWeight: w('home'), findWeight: w('find'), joinWeight: w('join'), contactWeight: w('contact'),
       textColor: dark ? '#f4f2ea' : '#14182c',
-      logoSrc: dark ? 'assets/logo_dark_bg.png' : 'assets/logo_light_bg.png',
+      logoSrc: dark ? '/assets/logo_dark_bg.png' : '/assets/logo_light_bg.png',
       borderColor: dark ? 'rgba(244,242,234,0.14)' : 'rgba(20,24,44,0.1)',
       menuBg: dark ? '#14182c' : '#ffffff',
       menuOpen: this.state.menuOpen,

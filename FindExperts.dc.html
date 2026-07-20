@@ -3,17 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
+<script src="/support.js"></script>
 </head>
 <body>
 <x-dc>
 <helmet>
   <title>Find Experts | AI Ethics Consortium</title>
   <meta name="description" content="Browse verified profiles of certified AI professionals, ethicists, and auditors from the global AIEC network. Search by region, sector, and focus area." />
-  <link rel="canonical" href="https://aiec.pages.dev/find-experts" />
+  <link rel="canonical" href="https://ethicsconsortium.com/find-experts" />
   <meta property="og:title" content="Find Experts | AI Ethics Consortium" />
   <meta property="og:description" content="Browse verified profiles of certified AI professionals, ethicists, and auditors from the global AIEC network." />
-  <meta property="og:url" content="https://aiec.pages.dev/find-experts" />
+  <meta property="og:url" content="https://ethicsconsortium.com/find-experts" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="AI Ethics Consortium" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,7 +23,7 @@
 
 <div style="font-family: 'IBM Plex Sans', sans-serif; background: #ffffff; color: #14182c; width: 100%; overflow-x: hidden;" data-screen-label="Find Experts">
 
-  <div style="position: relative; background-image: linear-gradient(180deg, rgba(10,13,26,0.55), rgba(10,13,26,0.85)), url('assets/img_office_meeting.png'); background-size: cover; background-position: center;">
+  <div style="position: relative; background-image: linear-gradient(180deg, rgba(10,13,26,0.55), rgba(10,13,26,0.85)), url('/assets/img_office_meeting.png'); background-size: cover; background-position: center;">
     <dc-import name="SiteNav" active="find" dark="{{ true }}" hint-size="100%,90px"></dc-import>
     <div style="max-width: 1180px; margin: 0 auto; padding: clamp(40px, 9vw, 64px) clamp(20px, 5vw, 56px) clamp(48px, 9vw, 80px);">
       <p style="display: inline-block; background: #d7ff4e; color: #14182c; font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; margin: 0 0 22px; padding: 8px 16px; border-radius: 100px;">The Directory</p>
@@ -75,17 +75,17 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 const PEOPLE = [
-  { name: 'Jess Sharkie', title: 'AIEC Co-founder | Community Development', credentials: 'CAIA, CAIE, CAIP', sectors: 'Public sector, Non-for-profit, Healthcare, Consulting', focus: 'Human Rights & AI, Governance, Ethics', region: 'Australia', photo: 'assets/head_jess.png', slug: '/experts/jess-sharkie' },
-  { name: 'Katharine Nohr', title: 'AIEC Co-founder | AI Ethics Consultant', credentials: 'CAIA, CAIE, CAIP', sectors: 'Healthcare, Insurance, Consulting / Professional Services', focus: 'AI Ethics', region: 'USA', photo: 'assets/head_katharine.png', slug: '/experts/katharine-nohr' },
-  { name: 'Sara Portell', title: 'AIEC Co-founder | Behavioural Scientist | AI Governance Expert', credentials: 'CAIE, ISO/IEC 42001 Auditor', sectors: 'Education, Mental Health/Wellbeing, SaaS B2B, eCommerce, Travel', focus: 'Human–AI interaction, Ethics & Governance', region: 'EU', photo: 'assets/head_sara.png', slug: '/experts/sara-portell' },
-  { name: 'Jennifer McKinney', title: 'AIEC Co-founder | AI Governance & Regulatory Intelligence Architect', credentials: 'CAIA, CAIE, CAIP', sectors: 'Non Profit, Retail, Supply Chains, Medical Devices', focus: 'AI Product Strategy & Governance', region: 'USA', photo: 'assets/head_jennifer.png', slug: '/experts/jennifer-mckinney' },
-  { name: 'Arif Rahman', title: 'Head of Data & AI', credentials: 'CAIA, CAIP, CAIE, APM', sectors: 'Technology, Education, Consulting / Professional Services, Government', focus: 'Strategy, governance, and real-world implementation', region: 'UAE', photo: 'assets/head_arif.png', slug: '/experts/arif-rahman' },
-  { name: 'Rhonda Sharif', title: 'AI Governance Specialist & Solutions Architect', credentials: 'CAIA, CAIE, CAIP', sectors: 'Technology, Healthcare, Insurance, Consulting / Professional Services', focus: 'AI Governance', region: 'USA', photo: 'assets/head_rhonda.png', slug: '/experts/rhonda-sharif' },
-  { name: 'Prashant Vora', title: 'Vice President, Tata Consultancy Services Ltd', credentials: 'CAIA, CAIP, CAIE', sectors: 'Consulting / Professional Services, Technology, Financial Services, Communication, Media & Information Services', focus: 'AI Ethics', region: 'UK', photo: 'assets/head_prashant.png', slug: '/experts/prashant-vora' },
-  { name: 'Angelo Manassero', title: 'Corporate Philosopher | AI Ethics & Governance Advisor', credentials: 'CAIA, CAIE, CAIP', sectors: 'Consulting / Professional Services, Non-profits / NGOs, Education, Public Sector, Human Resources / Talent & Recruitment', focus: 'AI Ethics & Governance', region: 'Italy', photo: 'assets/head_angelo.png', slug: '/experts/angelo-manassero' },
-  { name: 'Hande Ocak Basev', title: 'Managing Partner, WSI', credentials: 'CAIE, CAIP, CAIA', sectors: 'Technology, Financial Services, Consulting / Professional Services, Government / Public Sector, Retail, Manufacturing', focus: 'AI Strategy, Governance & Workforce Readiness', region: 'Turkey', photo: 'assets/head_hande.png', slug: '/experts/hande-ocak-basev' },
-  { name: 'John McGann', title: 'Global Programme Director, Albany Ltd', credentials: 'CAIP, CAIE, CAIA', sectors: 'Technology, Financial Services, Healthcare, Government / Public Sector, Manufacturing, Retail', focus: 'AI Governance, Risk Assessment & Regulatory Conformity', region: 'UK', photo: 'assets/head_john.png', slug: '/experts/john-mcgann' },
-  { name: 'Jordan Henry', title: 'Founder | Chief AI Ethicist, Veritas AI Consulting', credentials: 'CAIE, CAIA, CAIP', sectors: 'Technology, Healthcare, Pharmaceuticals / Life Sciences, Education, Insurance, Government / Public Sector, Non-profits / NGOs', focus: 'AI Ethics, Governance & Compliance in Healthcare', region: 'USA', photo: 'assets/head_jordan.png', slug: '/experts/jordan-henry' },
+  { name: 'Jess Sharkie', title: 'AIEC Co-founder | Community Development', credentials: 'CAIA, CAIE, CAIP', sectors: 'Public sector, Non-for-profit, Healthcare, Consulting', focus: 'Human Rights & AI, Governance, Ethics', region: 'Australia', photo: '/assets/head_jess.png', slug: '/experts/jess-sharkie' },
+  { name: 'Katharine Nohr', title: 'AIEC Co-founder | AI Ethics Consultant', credentials: 'CAIA, CAIE, CAIP', sectors: 'Healthcare, Insurance, Consulting / Professional Services', focus: 'AI Ethics', region: 'USA', photo: '/assets/head_katharine.png', slug: '/experts/katharine-nohr' },
+  { name: 'Sara Portell', title: 'AIEC Co-founder | Behavioural Scientist | AI Governance Expert', credentials: 'CAIE, ISO/IEC 42001 Auditor', sectors: 'Education, Mental Health/Wellbeing, SaaS B2B, eCommerce, Travel', focus: 'Human–AI interaction, Ethics & Governance', region: 'EU', photo: '/assets/head_sara.png', slug: '/experts/sara-portell' },
+  { name: 'Jennifer McKinney', title: 'AIEC Co-founder | AI Governance & Regulatory Intelligence Architect', credentials: 'CAIA, CAIE, CAIP', sectors: 'Non Profit, Retail, Supply Chains, Medical Devices', focus: 'AI Product Strategy & Governance', region: 'USA', photo: '/assets/head_jennifer.png', slug: '/experts/jennifer-mckinney' },
+  { name: 'Arif Rahman', title: 'Head of Data & AI', credentials: 'CAIA, CAIP, CAIE, APM', sectors: 'Technology, Education, Consulting / Professional Services, Government', focus: 'Strategy, governance, and real-world implementation', region: 'UAE', photo: '/assets/head_arif.png', slug: '/experts/arif-rahman' },
+  { name: 'Rhonda Sharif', title: 'AI Governance Specialist & Solutions Architect', credentials: 'CAIA, CAIE, CAIP', sectors: 'Technology, Healthcare, Insurance, Consulting / Professional Services', focus: 'AI Governance', region: 'USA', photo: '/assets/head_rhonda.png', slug: '/experts/rhonda-sharif' },
+  { name: 'Prashant Vora', title: 'Vice President, Tata Consultancy Services Ltd', credentials: 'CAIA, CAIP, CAIE', sectors: 'Consulting / Professional Services, Technology, Financial Services, Communication, Media & Information Services', focus: 'AI Ethics', region: 'UK', photo: '/assets/head_prashant.png', slug: '/experts/prashant-vora' },
+  { name: 'Angelo Manassero', title: 'Corporate Philosopher | AI Ethics & Governance Advisor', credentials: 'CAIA, CAIE, CAIP', sectors: 'Consulting / Professional Services, Non-profits / NGOs, Education, Public Sector, Human Resources / Talent & Recruitment', focus: 'AI Ethics & Governance', region: 'Italy', photo: '/assets/head_angelo.png', slug: '/experts/angelo-manassero' },
+  { name: 'Hande Ocak Basev', title: 'Managing Partner, WSI', credentials: 'CAIE, CAIP, CAIA', sectors: 'Technology, Financial Services, Consulting / Professional Services, Government / Public Sector, Retail, Manufacturing', focus: 'AI Strategy, Governance & Workforce Readiness', region: 'Turkey', photo: '/assets/head_hande.png', slug: '/experts/hande-ocak-basev' },
+  { name: 'John McGann', title: 'Global Programme Director, Albany Ltd', credentials: 'CAIP, CAIE, CAIA', sectors: 'Technology, Financial Services, Healthcare, Government / Public Sector, Manufacturing, Retail', focus: 'AI Governance, Risk Assessment & Regulatory Conformity', region: 'UK', photo: '/assets/head_john.png', slug: '/experts/john-mcgann' },
+  { name: 'Jordan Henry', title: 'Founder | Chief AI Ethicist, Veritas AI Consulting', credentials: 'CAIE, CAIA, CAIP', sectors: 'Technology, Healthcare, Pharmaceuticals / Life Sciences, Education, Insurance, Government / Public Sector, Non-profits / NGOs', focus: 'AI Ethics, Governance & Compliance in Healthcare', region: 'USA', photo: '/assets/head_jordan.png', slug: '/experts/jordan-henry' },
 ];
 
 class Component extends DCLogic {

@@ -8,4 +8,4 @@ Disallow: /SiteNav.dc
 Disallow: /SiteFooter.dc
 Disallow: /*.dc.html$
 
-Sitemap: https://aiec.pages.dev/sitemap.xml
+Sitemap: https://ethicsconsortium.com/sitemap.xml
