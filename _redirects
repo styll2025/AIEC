@@ -20,6 +20,8 @@
 /experts/hande-ocak-basev  /Profile-Hande-Ocak-Basev.dc  200
 /experts/john-mcgann  /Profile-John-McGann.dc  200
 /experts/jordan-henry  /Profile-Jordan-Henry.dc  200
+/experts/stefan-mohr  /Profile-Stefan-Mohr.dc  200
+/experts/kaz-sahota  /Profile-Kaz-Sahota.dc  200
 /legal/terms-of-service  /Legal-Terms-of-Service.dc  200
 /legal/privacy-policy  /Legal-Privacy-Policy.dc  200
 /legal/cookie-policy  /Legal-Cookie-Policy.dc  200
@@ -43,6 +45,8 @@
 /experts/hande-ocak-basev/  /experts/hande-ocak-basev  301
 /experts/john-mcgann/  /experts/john-mcgann  301
 /experts/jordan-henry/  /experts/jordan-henry  301
+/experts/stefan-mohr/  /experts/stefan-mohr  301
+/experts/kaz-sahota/  /experts/kaz-sahota  301
 /legal/terms-of-service/  /legal/terms-of-service  301
 /legal/privacy-policy/  /legal/privacy-policy  301
 /legal/cookie-policy/  /legal/cookie-policy  301
@@ -267,3 +271,15 @@
 /find-experts.html  /find-experts  301
 /AIEC%20-%20Code%20of%20Conduct%20(standalone).html  /legal/code-of-conduct  301
 /AIEC%20-%20Code%20of%20Conduct%20%28standalone%29.html  /legal/code-of-conduct  301
+
+# New expert profiles — legacy redirects
+/Profile-Stefan-Mohr.dc  /experts/stefan-mohr  301
+/Profile-Stefan-Mohr.dc.html  /experts/stefan-mohr  301
+/Profile-Stefan-Mohr  /experts/stefan-mohr  301
+/profile-stefan-mohr  /experts/stefan-mohr  301
+/stefan-mohr  /experts/stefan-mohr  301
+/Profile-Kaz-Sahota.dc  /experts/kaz-sahota  301
+/Profile-Kaz-Sahota.dc.html  /experts/kaz-sahota  301
+/Profile-Kaz-Sahota  /experts/kaz-sahota  301
+/profile-kaz-sahota  /experts/kaz-sahota  301
+/kaz-sahota  /experts/kaz-sahota  301

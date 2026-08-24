@@ -28,7 +28,7 @@
     <div style="max-width: 1180px; margin: 0 auto; padding: 16px clamp(20px, 5vw, 56px) clamp(40px, 8vw, 64px); display: flex; gap: 32px; align-items: center; flex-wrap: wrap;">
       <div style="position: relative; flex: none;">
         <div style="position: absolute; top: 8px; left: 8px; width: 140px; height: 140px; background: #d7ff4e; border-radius: 50%; z-index: 0;"></div>
-        <img src="{{ photo }}" alt="{{ name }}" style="position: relative; z-index: 1; width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 3px solid #14182c;" />
+        <img src="{{ photo }}" alt="{{ name }}" style="position: relative; z-index: 1; width: 140px; height: 140px; border-radius: 50%; object-fit: {{ photoFit }}; object-position: {{ photoPosition }}; background: #ffffff; border: 3px solid #14182c;" />
       </div>
       <div>
         <h1 style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: clamp(26px, 5vw, 36px); color: #f6f4ee; margin: 0 0 10px; letter-spacing: -0.5px;">{{ name }}</h1>
@@ -102,6 +102,8 @@ class Component extends DCLogic {
       name: p.personName, title: p.title, credentials: p.credentials,
       based: p.based, company: p.company, geoCoverage: p.geoCoverage,
       photo: p.photo,
+      photoPosition: p.photoPosition || 'center',
+      photoFit: p.photoFit || 'cover',
       hasExtraContact: !!p.extraLabel,
       extraLabel: p.extraLabel || '', extraValue: p.extraValue || '',
       bgParagraphs: p.bgParagraphs || [],

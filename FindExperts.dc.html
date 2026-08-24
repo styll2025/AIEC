@@ -51,7 +51,7 @@
       <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px;">
         <sc-for list="{{ filtered }}" as="p" hint-placeholder-count="8">
           <div style="border: 1px solid rgba(20,24,44,0.12); border-radius: 4px; padding: 32px 28px; text-align: center; border-top: 3px solid #7c3aed; transition: none;">
-            <img src="{{ p.photo }}" alt="{{ p.name }}" style="width: 96px; height: 96px; border-radius: 50%; object-fit: cover; margin: 0 auto 18px; display: block;" />
+            <img src="{{ p.photo }}" alt="{{ p.name }}" style="width: 96px; height: 96px; border-radius: 50%; object-fit: {{ p.photoFit }}; object-position: {{ p.photoPosition }}; background: #ffffff; margin: 0 auto 18px; display: block;" />
             <h3 style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 18px; font-weight: 700; color: #14182c; margin: 0 0 6px;">{{ p.name }}</h3>
             <p style="font-size: 13px; color: #7c3aed; margin: 0 0 4px; font-weight: 600;">{{ p.title }}</p>
             <p style="font-size: 12.5px; color: #7b7e91; margin: 0 0 16px;">{{ p.credentials }}</p>
@@ -77,7 +77,7 @@
 const PEOPLE = [
   { name: 'Jess Sharkie', title: 'AIEC Co-founder | Community Development', credentials: 'CAIA, CAIE, CAIP', sectors: 'Public sector, Non-for-profit, Healthcare, Consulting', focus: 'Human Rights & AI, Governance, Ethics', region: 'Australia', photo: '/assets/head_jess.png', slug: '/experts/jess-sharkie' },
   { name: 'Katharine Nohr', title: 'AIEC Co-founder | AI Ethics Consultant', credentials: 'CAIA, CAIE, CAIP', sectors: 'Healthcare, Insurance, Consulting / Professional Services', focus: 'AI Ethics', region: 'USA', photo: '/assets/head_katharine.png', slug: '/experts/katharine-nohr' },
-  { name: 'Sara Portell', title: 'AIEC Co-founder | Behavioural Scientist | AI Governance Expert', credentials: 'CAIE, ISO/IEC 42001 Auditor', sectors: 'Education, Mental Health/Wellbeing, SaaS B2B, eCommerce, Travel', focus: 'Human–AI interaction, Ethics & Governance', region: 'EU', photo: '/assets/head_sara.png', slug: '/experts/sara-portell' },
+  { name: 'Sara Portell', title: 'AIEC Co-founder | Behavioural Scientist | Responsible AI and Governance Consultant', credentials: 'CAIE, ISO/IEC 42001 Auditor', sectors: 'Education, Mental Health/Wellbeing, SaaS B2B, eCommerce, Travel', focus: 'Human–AI interaction, Ethics & Governance', region: 'EU', photo: '/assets/head_sara.png', slug: '/experts/sara-portell' },
   { name: 'Jennifer McKinney', title: 'AIEC Co-founder | AI Governance & Regulatory Intelligence Architect', credentials: 'CAIA, CAIE, CAIP', sectors: 'Non Profit, Retail, Supply Chains, Medical Devices', focus: 'AI Product Strategy & Governance', region: 'USA', photo: '/assets/head_jennifer.png', slug: '/experts/jennifer-mckinney' },
   { name: 'Arif Rahman', title: 'Head of Data & AI', credentials: 'CAIA, CAIP, CAIE, APM', sectors: 'Technology, Education, Consulting / Professional Services, Government', focus: 'Strategy, governance, and real-world implementation', region: 'UAE', photo: '/assets/head_arif.png', slug: '/experts/arif-rahman' },
   { name: 'Rhonda Sharif', title: 'AI Governance Specialist & Solutions Architect', credentials: 'CAIA, CAIE, CAIP', sectors: 'Technology, Healthcare, Insurance, Consulting / Professional Services', focus: 'AI Governance', region: 'USA', photo: '/assets/head_rhonda.png', slug: '/experts/rhonda-sharif' },
@@ -86,6 +86,8 @@ const PEOPLE = [
   { name: 'Hande Ocak Basev', title: 'Managing Partner, WSI', credentials: 'CAIE, CAIP, CAIA', sectors: 'Technology, Financial Services, Consulting / Professional Services, Government / Public Sector, Retail, Manufacturing', focus: 'AI Strategy, Governance & Workforce Readiness', region: 'Turkey', photo: '/assets/head_hande.png', slug: '/experts/hande-ocak-basev' },
   { name: 'John McGann', title: 'Global Programme Director, Albany Ltd', credentials: 'CAIP, CAIE, CAIA', sectors: 'Technology, Financial Services, Healthcare, Government / Public Sector, Manufacturing, Retail', focus: 'AI Governance, Risk Assessment & Regulatory Conformity', region: 'UK', photo: '/assets/head_john.png', slug: '/experts/john-mcgann' },
   { name: 'Jordan Henry', title: 'Founder | Chief AI Ethicist, Veritas AI Consulting', credentials: 'CAIE, CAIA, CAIP', sectors: 'Technology, Healthcare, Pharmaceuticals / Life Sciences, Education, Insurance, Government / Public Sector, Non-profits / NGOs', focus: 'AI Ethics, Governance & Compliance in Healthcare', region: 'USA', photo: '/assets/head_jordan.png', slug: '/experts/jordan-henry' },
+  { name: 'Stefan Mohr', title: 'IT and AI Governance Founder and Consultant, Specs in Action', credentials: '', sectors: 'Technology, Healthcare, Financial Services, Government / Public Sector, Legal, Cybersecurity', focus: 'AI Governance, Compliance-by-Design & Data Protection', region: 'EU', photo: '/assets/head_stefan.png', photoFit: 'contain', photoPosition: 'center 30%', slug: '/experts/stefan-mohr' },
+  { name: 'Kaz Sahota', title: 'Interim & Fractional B2B Software Leader', credentials: 'CAIP, CAIE, CAIA', sectors: 'Technology, Government / Public Sector, Non-profits / NGOs, Telecommunications', focus: 'AI Governance in Commercial & Customer-Facing Operations', region: 'Global', photo: '/assets/head_kaz.jpeg', slug: '/experts/kaz-sahota' },
 ];
 
 class Component extends DCLogic {
@@ -99,7 +101,7 @@ class Component extends DCLogic {
       const haystack = (p.name + ' ' + p.sectors + ' ' + p.focus + ' ' + p.title).toLowerCase();
       const matchesQuery = q === '' || haystack.includes(q);
       return matchesRegion && matchesQuery;
-    });
+    }).map(p => ({ ...p, photoFit: p.photoFit || 'cover', photoPosition: p.photoPosition || 'center' }));
     const regions = ['All Regions', ...Array.from(new Set(PEOPLE.map(p => p.region))).sort()];
     return {
       query: this.state.query,
