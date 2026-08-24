@@ -25,6 +25,8 @@
   extra-label="{{ data.extraLabel }}"
   extra-value="{{ data.extraValue }}"
   photo="{{ data.photo }}"
+  photo-position="{{ data.photoPosition }}"
+  photo-fit="{{ data.photoFit }}"
   bg-paragraphs="{{ data.bgParagraphs }}"
   support-heading="{{ data.supportHeading }}"
   support-blocks="{{ data.supportBlocks }}"
@@ -52,6 +54,8 @@ class Component extends DCLogic {
         extraLabel: '',
         extraValue: '',
         photo: '/assets/head_stefan.png',
+        photoPosition: 'center 28%',
+        photoFit: 'contain',
         consultation: false,
         canonicalPath: '/experts/stefan-mohr',
         metaDescription: 'Stefan Mohr — IT and AI governance consultant focused on compliance-by-design, data protection, and spec-driven AI governance at Specs in Action.',
