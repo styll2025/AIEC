@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<dc-import name="ProfilePage"
+  person-name="{{ data.name }}"
+  title="{{ data.title }}"
+  credentials="{{ data.credentials }}"
+  based="{{ data.based }}"
+  company="{{ data.company }}"
+  geo-coverage="{{ data.geoCoverage }}"
+  extra-label="{{ data.extraLabel }}"
+  extra-value="{{ data.extraValue }}"
+  photo="{{ data.photo }}"
+  bg-paragraphs="{{ data.bgParagraphs }}"
+  support-heading="{{ data.supportHeading }}"
+  support-blocks="{{ data.supportBlocks }}"
+  industries-label="{{ data.industriesLabel }}"
+  industries="{{ data.industries }}"
+  consultation="{{ data.consultation }}"
+  email="{{ data.email }}"
+  hint-size="100%,100%">
+</dc-import>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      data: {
+        name: 'Meltem Günyüzlü Ateş',
+        title: 'Responsible AI transformation consultant and trainer',
+        credentials: 'Certified AI Professional (CAIP); Certified AI Ethicist (CAIE); Certified AI Auditor (CAIA)',
+        based: 'Turkey',
+        company: 'MG Consultancy and Academy',
+        geoCoverage: 'EU, UK',
+        extraLabel: 'Website',
+        extraValue: 'meltemgunyuzlu.com',
+        photo: 'assets/head_meltem.jpg',
+        consultation: false,
+        email: 'meltem@meltemgunyuzlu.com',
+        bgParagraphs: [
+          'I graduated with high honours in Business Administration from Middle East Technical University, am a Global Ambassador for the Global Council for Responsible AI (GCRAI) and mentor startups on how to scale AI responsibly.',
+        ],
+        supportHeading: "How Meltem's Work Supports Organisations",
+        supportBlocks: [
+          { heading: 'AI Transformation Mentor / Advisor', body: 'One-to-one mentoring and advisory for founders, leadership teams and PE / VC portfolio leaders making decisions about AI investment, risk and governance.' },
+          { heading: 'Responsible AI Governance', body: 'Trust architecture, accountability mapping, human oversight, and reading AI regulation for what it changes in an organisation.' },
+          { heading: 'Lead AI Responsibly Training', body: 'This programme helps leaders and their teams use AI to create value while holding to ethical standards. Sessions sit in three groups: strategy for leaders, hands-on labs for teams, and standalone sessions on what is changing in AI.' },
+        ],
+        industriesLabel: 'Industries She Focuses On',
+        industries: 'Education, Consulting / Professional Services.',
+      },
+    };
+  }
+}
+
+</script>
+</body>
+</html>
