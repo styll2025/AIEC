@@ -22,6 +22,7 @@
 /experts/jordan-henry  /Profile-Jordan-Henry.dc  200
 /experts/stefan-mohr  /Profile-Stefan-Mohr.dc  200
 /experts/kaz-sahota  /Profile-Kaz-Sahota.dc  200
+/experts/meltem-gunyuzlu-ates  /Profile-Meltem-Gunyuzlu-Ates.dc  200
 /legal/terms-of-service  /Legal-Terms-of-Service.dc  200
 /legal/privacy-policy  /Legal-Privacy-Policy.dc  200
 /legal/cookie-policy  /Legal-Cookie-Policy.dc  200
@@ -47,6 +48,7 @@
 /experts/jordan-henry/  /experts/jordan-henry  301
 /experts/stefan-mohr/  /experts/stefan-mohr  301
 /experts/kaz-sahota/  /experts/kaz-sahota  301
+/experts/meltem-gunyuzlu-ates/  /experts/meltem-gunyuzlu-ates  301
 /legal/terms-of-service/  /legal/terms-of-service  301
 /legal/privacy-policy/  /legal/privacy-policy  301
 /legal/cookie-policy/  /legal/cookie-policy  301
@@ -283,3 +285,8 @@
 /Profile-Kaz-Sahota  /experts/kaz-sahota  301
 /profile-kaz-sahota  /experts/kaz-sahota  301
 /kaz-sahota  /experts/kaz-sahota  301
+/Profile-Meltem-Gunyuzlu-Ates.dc  /experts/meltem-gunyuzlu-ates  301
+/Profile-Meltem-Gunyuzlu-Ates.dc.html  /experts/meltem-gunyuzlu-ates  301
+/Profile-Meltem-Gunyuzlu-Ates  /experts/meltem-gunyuzlu-ates  301
+/profile-meltem-gunyuzlu-ates  /experts/meltem-gunyuzlu-ates  301
+/meltem-gunyuzlu-ates  /experts/meltem-gunyuzlu-ates  301
